@@ -76,6 +76,9 @@ table{
     border-collapse: collapse;
     border-radius: 0.5rem;
 }
+thead td{
+   padding:0.5rem;
+}
 ul{
     margin: 1.5rem;
     margin-left: 3rem;
@@ -134,10 +137,15 @@ input[type = "checkbox"]{
     flex-direction: column;
 }
 .flag2{
-    display: flex;
+    display: inline-flex;
+    
     margin-right: 0.3rem;
     flex-direction: column;
 }
+.koreanFlag{
+   background: linear-gradient(180deg, rgba(195,0,0,1) 0%, rgba(195,0,0,1) 50%, rgba(0,6,150,1) 50%, rgba(0,6,150,1) 100%);
+}
+
 @media only screen and (orientation:portrait){
     table{
         width: 90vw;
@@ -147,6 +155,9 @@ input[type = "checkbox"]{
         margin: 1rem 0;
         line-height: 2rem;
     }
+    *{
+       font-size:1rem;
+    }
     .text{
         width: 85vw;
         border-radius: 0.5rem;
@@ -154,4 +165,11 @@ input[type = "checkbox"]{
     ul{
         margin-left: 1rem;
     }
+}
+.madeBy{
+   position:absolute;
+   bottom: 1rem;
+   right: 1rem;
+   cursor: pointer;
+   font-size:1rem;
 }
