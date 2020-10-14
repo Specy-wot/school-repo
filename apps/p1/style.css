@@ -138,9 +138,17 @@ input[type = "checkbox"]{
 }
 .flag2{
     display: inline-flex;
-    
-    margin-right: 0.3rem;
     flex-direction: column;
+}
+.flag2Text{
+    display: flex;
+    margin-left: 0.3rem;
+    align-items: center;
+}
+.flagAndName{
+    display: flex; 
+    border: none; 
+    border-bottom:1px solid black;
 }
 .koreanFlag{
    background: linear-gradient(180deg, rgba(195,0,0,1) 0%, rgba(195,0,0,1) 50%, rgba(0,6,150,1) 50%, rgba(0,6,150,1) 100%);
