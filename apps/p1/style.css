@@ -1,0 +1,157 @@
+*{
+    font-family: Arial;
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+.title{
+    font-size: 3rem;
+    width: 100%;
+    margin: 1rem;
+    text-align: center;
+}
+.smallerTitle{
+    font-size: 2rem;
+    width: 100%;
+    margin: 1rem;
+    text-align: center;   
+}
+.text{
+    width: 60vw;
+    line-height: 1.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 1rem;
+}
+body,html{
+    min-height: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body{
+    padding: 1rem;
+    background: rgb(27 25 35)
+}
+.button{
+    padding:0.5rem;
+    background-color: limegreen;
+    color: white;
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+.buttonFill{
+    padding:0.5rem;
+    background-color: limegreen;
+    color: white;
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    margin: 0.5rem;
+    flex: 1;
+    justify-content: center;
+}
+.layer1{
+    background: rgb(42 41 51) ;
+    color: white ;
+}
+.layer2{
+    background: #464646 ;
+    color: white ;
+}
+table{
+    width: 50vw;
+    margin: 1rem;
+    border: solid 2px black;
+    border-collapse: collapse;
+    border-radius: 0.5rem;
+}
+ul{
+    margin: 1.5rem;
+    margin-left: 3rem;
+}
+td{
+    border: solid 1px black;
+    padding: 0.2rem;
+}
+td div{
+    display: inline-block;
+}
+.flag{
+    display: inline-flex;
+}
+.flag div{
+    width: 15px;
+    height: 24px;
+}
+.flag2 div{
+    width: 45px;
+    height: 8px;
+}
+.row{
+    display: flex;
+    align-items: center;
+    margin: 0.2rem;
+}
+input[type = "checkbox"]{
+    margin-right: 1rem;
+}
+.input{
+    background-color: #2d304e;
+    margin: 0.5rem;
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+    border: none;
+    overflow: hidden;
+}
+.input::placeholder{
+    color: white;
+}
+.input:focus::placeholder{
+    color: limegreen;
+}
+.hobbyHolder .row div{
+    font-size: 1.5rem;
+}
+.hobbyHolder{
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    margin: 0.5rem;
+}
+.inputHolder{
+    display: flex;
+    flex-direction: column;
+}
+.flag2{
+    display: flex;
+    margin-right: 0.3rem;
+    flex-direction: column;
+}
+@media only screen and (orientation:portrait){
+    table{
+        width: 90vw;
+        margin: 0;
+    }
+    .smallerTitle{
+        margin: 1rem 0;
+        line-height: 2rem;
+    }
+    .text{
+        width: 85vw;
+        border-radius: 0.5rem;
+    }
+    ul{
+        margin-left: 1rem;
+    }
+}

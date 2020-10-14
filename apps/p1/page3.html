@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+
+  <title>Esercizio Tpsit</title>
+  <meta name="description" content="Esercizio">
+  <meta name="author" content="Specy">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="button" style="position: absolute; top: 0rem; left: 0rem; font-size: 1.1rem;"
+    onclick="window.location='./page2.html'">
+        Torna indietro
+    </div>
+    <div class="title" style="margin-top: 4rem;">
+        Registrati al nostro corso!
+    </div>
+    <img src="signin.png" height="300" style="margin-bottom: 5rem;">
+    <div class="text layer1" style="margin-bottom: 0;">
+        <form>
+            <div class="inputHolder">
+                <input type="text" name="nome" placeholder="Nome" class="input">
+                <input type="text" name="cognome" placeholder="Cognome" class="input">
+                <input type="text" name="via" placeholder="Via" class="input">
+                <input type="text" name="città" placeholder="Città" class="input">
+                <input type="text" name="provincia" placeholder="provincia" class="input">
+                <input type="text" name="età" placeholder="Età" class="input">
+                <input type="text" name="mail" placeholder="Email" class="input">
+                <select name="titoloDiStudio" class="input">
+                    <option selected disabled>Titolo di studio</option>
+                    <option>Scuola di infanzia</option>
+                    <option>Scuola primaria</option>
+                    <option>Scuola secondaria di 1° grado</option>
+                    <option>Scuola secondaria di 2° grado</option>
+                    <option>Diploma</option>
+                    <option>Laurea</option>
+                    <option>Master</option>
+                </select>
+            </div>
+
+            <div class="layer2 hobbyHolder">
+                <div class="smallerTitle">
+                    Seleziona i tuoi Hobby: 
+                </div>
+                <div class="row">
+                    <input type="checkbox" name="cb1">
+                    <div>Sport</div>
+                </div>
+                <div class="row">
+                    <input type="checkbox" name="cb2">
+                    <div>Musica</div>
+                </div>
+                <div class="row">
+                    <input type="checkbox" name="cb3">
+                    <div>Film</div>
+                </div>
+                <div class="row">
+                    <input type="checkbox" name="cb4">
+                    <div>Programmazione</div>
+                </div>
+                <div class="row">
+                    <input type="checkbox" name="cb5">
+                    <div>Social</div>
+                </div>
+                <div class="row">
+                    <input type="checkbox" name="cb6">
+                    <div>Videogiochi</div>
+                </div>
+                <div class="row">
+                    <input type="text" name="altroHobby"placeholder="Altro" class="input"> 
+                </div>
+            </div>
+            <div style="display: flex; margin-top: 3rem;">
+                <input type="submit" class="buttonFill" onclick="window.location='./page3.html'" value="Registrati!">
+            </div>
+
+        </form>
+    </div>
+</body>
+<script>
+
+</script>
+</html>
