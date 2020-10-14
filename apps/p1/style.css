@@ -1,6 +1,6 @@
 *{
     font-family: Arial;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 0;
     padding: 0;
     color: white;
@@ -75,6 +75,12 @@ table{
     border: solid 2px black;
     border-collapse: collapse;
     border-radius: 0.5rem;
+}
+select{
+    background: url(./keyboard_arrow_down-24px.svg) no-repeat 98% 50%;
+	-moz-appearance: none; 
+	-webkit-appearance: none; 
+	appearance: none;
 }
 thead td{
    padding:0.5rem;
