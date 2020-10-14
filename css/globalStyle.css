@@ -1,0 +1,81 @@
+*{
+    font-family: Arial;
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+.layer1{
+    background: rgb(42 41 51) ;
+    color: white ;
+}
+.layer2{
+    background: #464646 ;
+    color: white ;
+}
+body,html{
+    min-height: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body{
+    padding: 1rem;
+    background: rgb(27 25 35)
+}
+.title{
+    font-size: 3rem;
+    width: 100%;
+    margin: 1rem;
+    text-align: center;
+}
+.smallerTitle{
+    font-size: 2rem;
+    width: 100%;
+    margin: 1rem;
+    text-align: center;   
+}
+.text{
+    width: 60vw;
+    line-height: 1.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 1rem;
+}
+.button{
+    padding:0.5rem;
+    background-color: limegreen;
+    color: white;
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+.buttonFill{
+    padding:0.5rem;
+    background-color: limegreen;
+    color: white;
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    margin: 0.5rem;
+    flex: 1;
+    justify-content: center;
+}
+@media only screen and (orientation:portrait){
+    .smallerTitle{
+        margin: 1rem 0;
+        line-height: 2rem;
+    }
+    .text{
+        width: 85vw;
+        border-radius: 0.5rem;
+    }
+}
