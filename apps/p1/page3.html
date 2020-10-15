@@ -10,6 +10,7 @@
   <meta name="author" content="Specy">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#191B23">
+  <meta charset = "UTF-8" />
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -25,13 +26,13 @@
     <div class="text layer1" style="margin-bottom: 0;">
         <form>
             <div class="inputHolder">
-                <input type="text" name="nome" placeholder="Nome" class="input">
-                <input type="text" name="cognome" placeholder="Cognome" class="input">
-                <input type="text" name="via" placeholder="Via" class="input">
-                <input type="text" name="città" placeholder="Città" class="input">
-                <input type="text" name="provincia" placeholder="provincia" class="input">
-                <input type="text" name="età" placeholder="Età" class="input">
-                <input type="text" name="mail" placeholder="Email" class="input">
+                <input type="text" name="nome" placeholder="Nome" class="input" required>
+                <input type="text" name="cognome" placeholder="Cognome" class="input" required>
+                <input type="text" name="via" placeholder="Via" class="input" required>
+                <input type="text" name="città" placeholder="Città" class="input" required>
+                <input type="text" name="provincia" placeholder="Provincia" class="input" required>
+                <input type="text" name="età" placeholder="Età" class="input" required>
+                <input type="text" name="mail" placeholder="Email" class="input" required>
                 <select name="titoloDiStudio" class="input">
                     <option selected disabled>Titolo di studio</option>
                     <option>Scuola di infanzia</option>
@@ -77,7 +78,7 @@
                 </div>
             </div>
             <div style="display: flex; margin-top: 3rem;">
-                <input type="submit" class="buttonFill" onclick="window.location='./page3.html'" value="Registrati!">
+                <input type="submit" class="buttonFill" value="Registrati!">
             </div>
 
         </form>
