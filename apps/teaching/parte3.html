@@ -1,0 +1,557 @@
+<!doctype html>
+
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <title>Impara Html css e js</title>
+    <meta name="description" content="Impara Html css e js">
+    <meta name="author" content="Specy">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+</head>
+
+<body>
+    <div class="partWrapper">
+        <a class="partBefore" href="./parte2.html">
+            Parte 2 (CSS)
+        </a>
+    </div>
+    <div style="padding: 0.5rem;">
+        <div style="font-size: 1.8rem; text-align: center;">
+            Tutorial <br> HTML - Css - JavaScript
+        </div>
+        <div class="wrapper">
+            <div class="title">
+                JavaScript
+            </div>
+            <div class="text">
+                Abbiamo visto come html e css riescono insieme a creare il corpo di un sito, ma la mente vera e propria risiede in javascript. <br>
+                Nel 2020 ormai si può fare di tutto grazie a javascript, un singolo linguaggio ti prepara per creare siti, app, server, programmi etc
+                Esso è uno degli aspetti più importanti dello sviluppo web dato che riesce a dare una funzionalità alla pagina oltre ad essere solo bella da vedere. 
+                <br><br>
+                Con JavaScript si possono fare le seguenti cose:
+                <ul>
+                    <li>Eseguire funzioni quando si preme un bottone</li>
+                    <li>Modificare la pagina html in tutti i suoi aspetto</li>
+                    <li>Creare, modificare, rimuovere elementi HTML</li>
+                    <li>Prendere informazioni da server per poi mostrarli su html</li>
+                    <li>Inviare informazioni al server o altro</li>
+                    <li>Qualsiasi altra cosa un qualsiasi linguaggio può fare, di tutto</li>
+                </ul><br><br>
+                Per aggiungere javascipt al tuo sito, basta aggiungere questo tag DOPO il &lt;body> e iniziare a scrivere il codice al suo interno: 
+                <pre>
+                    <code class="language-html">
+    <script>
+        //Il tuo codice va qui 
+    </script>
+    <!--oppure tramite file-->
+    &lt;script src="file.js">&lt;/script>
+                    </code>
+                </pre>
+            </div>
+        </div>
+<!----------------------------------------------------->
+        <div class="wrapper">
+            <div class="title">
+                Premesse
+            </div>
+            <div class="text">
+                Per sviluppare con javascript è molto utile utilizzare la cosidetta "console" del browser, con la console possiamo inviare dal codice 
+                un testo che verrà mostrato nella console, così da facilitare il debug e aiutare nello sviluppo. <br>
+                Ogni browser su computer ha una console, la maggior parte si apre premendo "F12" e premendo su "console". 
+                <br><br>
+                Tramite la console potremo vedere anche tutti gli errori generati dal javascript e molto altro. 
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="title">
+                Eventi
+            </div>
+            <div class="text">
+                Gli eventi sono ciò che invocano le funzioni javascript, ne esistono di moltissimi tipi ma quelli principali sono:</br></br>
+                <ul>
+                    <li>onClick (quando un elemento si preme)</li>
+                    <li>onInput (quando si sta scrivendo in un elemento)</li>
+                    <li>onChange (quando il conenuto di un elemento cambia)</li>
+
+                </ul></br></br>
+                Essi poi possono essere collegati alle funzioni javascript così che possano essere eseguite quando l'evento è invocato. <br>
+                <br><br>
+                Esempio di evento in un elemento
+            </div>
+            <pre>
+        <code class="language-html">
+    <button onclick="alert('ciao')">Test eventi</button>
+        </code>
+        </pre>
+        <button onclick="alert('ciao')" style="color: black;">Test eventi</button>
+        </div>
+
+<!------------------------------------------------------------>
+        <div class="wrapper">
+            <div class="title">
+                Aiuto per debug e tool
+            </div>
+            <div class="text">
+                Il debug giusto andrebbe fatto tramite la console, ma per fare test veloci si possono usare anche i prompt etc, 
+                in TEORIA non andrebbero usati dato che disturbano molto l'utilizzo del sito, dato che sono molto intrusivi. <br>
+                I metodi di debug e vari tool che vedremo sono: </br></br>
+                <ol>
+                    <li>console.log()</li>
+                    <li>alert()</li>
+                    <li>prompt()</li>
+                    <li>confirm()</li>
+                </ol>
+                <br><br>
+                1) è un metodo per stampare qualsiasi tipo di dato alla console, da usare per qualsiasi cosa per aiuto allo sviluppo, non è possibile
+                però vederlo SENZA che si apra la console<br>
+                2) è un modo per mostrare un messaggio fisso in alto alla pagina, mostra il testo che si mette all'interno della funzione. <br>
+                3) è un modo per chiedere un dato all'utente tramite lo stesso messaggio dell'alert() <br>
+                4) è un modo per confermare / rifiutare qualcosa, usa lo stesso messaggio di alert() e prompt()<br><br>
+
+                In seguito potrai vedere il codice essere eseguito quando si preme l'elemento (onClick) e l'equivalente funzione eseguita
+            </div>
+            <pre>
+        <code class="language-html">
+    <button onclick="console.log('console')">console.log()</button>
+    <button onclick="alert('alert')">alert()</button>
+    <button onclick="prompt('prompr','test')">promp()</button>
+    <button onclick="confirm('confirm?')">confirm()</button>
+        </code>
+        </pre>
+        <button onclick="console.log('console')">console.log()</button>
+        <button onclick="alert('alert')">alert()</button>
+        <button onclick="prompt('prompr','test')">promp()</button>
+        <button onclick="confirm('confirm?')">confirm()</button>
+        </div>
+
+   <!------------------------------------------------------------>
+        <div class="wrapper">
+            <div class="title">
+                Funzioni e variabili
+            </div>
+            <div class="text">
+                Funzioni e variabili sono le parti più fondamentali di qualsiasi linguaggio di programmazione, JavaScript ci aiuta moltissimo con 
+                le variabili, infatti non è come java dove ogni tipo di variabile va dichiarata in un tale modo e tale modo deve rimanere, su javascript
+                qualsiasi variabile può avere qualsiasi tipo di valore, una stringa può diventare un array o un numero, un oggetto può diventare una stringa, di tutto. <br>
+                <br>
+                Le funzioni invece esistono di due tipi:
+                <br><br>
+                <ol>
+                    <li>Funzioni normali</li>
+                    <li>Funzioni anonime</li>
+                </ol>
+                <br><br>
+                1) Le funzioni normali si scrivono con la struttura: "function nomeFunzione(parametri){ //codice }", esse possono essere chiamate da qualsiasi 
+                elemento che invoca un evento oppure all'interno del codice stesso. 
+                2) Le funzioni anonime sono un concetto nuovo aggiunto da pochi anni e che probabilmente non sarà molto utile in questo momento ma è buono accennarle. 
+                <br> Esse sono funzioni, ma come dice il nome, sono anonime, esse non possono essere chiamate, invece sono usate a mo di variabile, oppure per accorciare una
+                funzione, oppure principalmente da usare all'interno dei "callback" (cerca su google "javascript funzione callback"). Ricorda, questo non è fondamentale
+                e verrà spiegato meglio in futuro.<br><br>
+                Quando si esegue una funzione, si possono passare dei "parametri" che sono semplicemente dati che dai alla funzione così da poter essere usati. <br>
+                Una funzione può come non, ritornare un valore, per ritornare un valore si usa la parola "return" e poi il dato che si vuole ritornare <br><br>
+
+                Le variabili esistono di 2 tipi, "let" e "const", spesso vedrete una chiamata "var" ma è datata e NON VA usata. <br>
+
+                let è il tipo di variabile normale, è utilizzata per inizializzare un nome e assegnargli un valore che poi può essere cambiato in futuro.<br>
+                const è un tipo di variabile costante, cioè che una volta inizializzata, non può essere cambiato il proprio contenuto o tipo. 
+                <br><br>
+                Una cosa molto importante da imparare dall'inizio è lo "scope" di una variabile, infatti una variabile può essere letta/scritta solo 
+                se è contenuta all'interno del proprio scope. <br>
+                Vedetela come un albero, una foglia in basso non può accedere alle foglie in alto, ma le foglie in alto possono accedere alle foglie in basso. 
+                <br>
+                Ogni "step" è fatto qualsiasi volta si utilizzano le { }, quindi per esempio all'interno di una funzione o di un if etc.
+                <br><br>
+                Esempio:
+
+            </div>
+        <pre>
+        <code class="language-javascript">
+    let variabile1 = "ciao"
+    if(variabile1 === "ciao"){
+        let variabile2 = variabile1 + 2
+        //variabile2 ora sarà "ciao2"
+    }
+    //qui variabile2 non può essere accessa quindi se la
+    //useremo avrà valore "undefined" (non definita)
+        </code>
+        </pre>
+        <br><br><br>
+        Di seguito un esempio utilizzando gli eventi, funzioni e variabili
+        <pre>
+        <code class="language-html">
+    <button onclick="testFunzione()">Testami!</button>
+    <script>
+    function testFunzione(){
+        //genera un numero a caso da 0 a 10 e lo arrotonda
+        let numeroACaso = Math.round(Math.random() * 10)
+        if(numeroACaso > 5){
+            let output = ritornaCiao(numeroACaso) + " grande"
+            alert(output)
+        }else{
+            let output = ritornaCiao(numeroACaso)  + " piccolo"
+            alert(output)
+        }
+    }
+    function ritornaCiao(numero){
+        return "ciao" + numero
+    }
+    </script>
+                </code>
+                </pre>
+                <button onclick="testFunzione()">Testami!</button>
+                <script>
+                    function testFunzione(){
+                        //genera un numero a caso da 0 a 10 e lo arrotonda
+                        let numeroACaso = Math.round(Math.random() * 10)
+                        if(numeroACaso > 5){
+                            let output = ritornaCiao(numeroACaso) + " grande"
+                            alert(output)
+                        }else{
+                            let output = ritornaCiao(numeroACaso)  + " piccolo"
+                            alert(output)
+                        }
+                    }
+                    function ritornaCiao(numero){
+                        return "ciao" + numero
+                    }
+                </script>
+        </div>
+        <!------------------------------------------------------------>
+        <div class="wrapper">
+            <div class="title">
+                Operatori logici
+            </div>
+            <div class="text">
+                Come ogni linguaggio, abbiamo i nostri operatori logici e aritmetici che ci permettono di effettuare le nostre logiche vere/false. <br>
+                Di seguito troviamo i principali: <br><br>
+                <ul>
+                    <li>=== (ugualianza)</li>
+                    <li>! (not, nega l'operazione successiva)</li>
+                    <li>!== (non ugualianza)</li>
+                    <li>> (maggiore)</li>
+                    <li>&lt; (minore)</li>
+                    <li>&& (and)</li>
+                    <li>|| (or)</li>
+                </ul><br><br>
+                Puoi vederli nello specifico <a href="https://www.w3schools.com/js/js_comparisons.asp">Qui</a>
+                <br><br>
+                Quando usi uno di questi operatori, avrai sempre un risultato di tipo true/false che poi potrai usare nelle condizioni. 
+            </div>
+        <pre>
+        </div>
+        <!------------------------------------------------------------>
+        <div class="wrapper">
+            <div class="title">
+                    Operatori    
+            </div>
+            <div class="text">
+                Gli operatori ci permettono di modificare gli elementi basilari come le stringhe e numeri. <br> Essi sono: <br><br>
+                <ul>
+                    <li>+ (più)</li>
+                    <li>- (meno)</li>
+                    <li>* (per)</li>
+                    <li>/ (diviso)</li>
+                    <li>% (modulo)</li>
+                    <li>++ (incremento di 1)</li>
+                    <li>-- (decremento di 1)</li>
+                </ul> <br><br>
+                Puoi vederli nello specifico <a href="https://www.w3schools.com/js/js_arithmetic.asp">Qui</a>  
+            </div>
+        </div>
+        <!------------------------------------------------------------>
+        <div class="wrapper">
+            <div class="title">
+                    Assegnazione    
+            </div>
+            <div class="text">
+                Gli operatori di assegnazione rendono più corto l'assegnare una variabile e modificarne il contenuto. 
+                <br>
+                Servono per non ripetere il nome della variabile due volte, rendendo il codice più facile da leggere. <br><br>
+                <ul>
+                    <li>= (assegnamento, NON CONFONDERE CON == o ===)</li>
+                    <li>+= (aggiungi e assegna)</li>
+                    <li>-= (riduci e assegna)</li>
+                    <li>*= (moltiplica e assegna)</li>
+                    <li>/= (dividi e assegna)</li>
+                </ul>   <br><br>
+                L'equivalente senza questi operatori sarebbe: <br>
+                <pre>
+                <code class="language-javascript">
+    let numero = 10
+
+        numero = numero + 1
+        numero = numero - 1 
+        numero = numero * 2
+        numero = numero / 2
+        //invece usando gli operatori: 
+        numero += 1
+        numero -= 1
+        numero *= 2
+        numero /= 2
+                </code>
+                </pre>
+                Puoi vederli nello specifico <a href="https://www.w3schools.com/js/js_assignment.asp">Qui</a>  
+                
+            </div>
+        </div>
+    <!------------------------------------------------------------>
+        <div class="wrapper">
+            <div class="title">
+                if, for, while, switch, try/catch
+            </div>
+            <div class="text">
+                Questi sono pezzi di codice che ci aiuteranno molto nello sviluppo vero e proprio, molto probabilmente li conoscerete già tutti 
+                dopo aver studiato altri linguaggi, ma li vedremo comunque. <br><br>
+
+                <ul>
+                    <li>if (se è vero, esegui)</li>
+                    <li>for (esegui con i dati che ti do)</li>
+                    <li>while (esegui finchè vero)</li>
+                    <li>switch (un if/else più elegante)</li>
+                    <li>try/catch (per catturare gli errori)</li>
+                </ul><br><br>
+                <pre>
+                <code class="language-javascript">
+    let numero = 5
+    if(numero > 3){
+        numero = 10
+    }else{
+        numero = 20
+    }
+
+    let secondoNumero = 1
+    for(let i = 0; i &lt; numero; i++){
+        //(variabile contatore, condizione, incremento)
+        secondoNumero += i
+    }
+
+    while(secondoNumero > 5){
+        //continua finchè secondoNumero non è più maggiore di 5
+        secondoNumero /= 2
+    }
+
+    switch(secondoNumero){
+        //confronta il valore di secondoNumero e fa qualcosa 
+        //in base al suo valore
+        case 1: 
+            console.log("uno")
+            break //si deve uscire dallo switch
+        case 2 : 
+            console.log("due")
+            break
+        degault :
+            //se il valore non è nessuno dei precedenti
+            console.log(secondoNumero)
+            break
+    }
+
+    try{
+        //errore divisione da 0
+        secondoNumero /= 0
+        console.log("Questo non verrà loggato")
+    }catch(error){
+        console.log("divisione per 0!")
+    }
+                </code>
+                </pre>
+            </div>
+        </div>
+        <!------------------------------------------------------------>
+        <div class="wrapper">
+            <div class="title">
+                Tipi di variabili
+            </div>
+            <div class="text">
+                Come detto prima, le variabili possono essere di tutti i tipi, ma questi tipi sono diversi l'uno dall'altro. <br>
+                Di seguito ci sono tutti i tipi di tipi di variabile e il loro utilizzo: <br><br>
+                <ol>
+                    <li>"ciao" (stringa)</li>
+                    <li>1 (numero</li>
+                    <li>[] (array)</li>
+                    <li>{} (oggetto)</li>
+                    <li>true (booleano)</li>
+                </ol><br><br>
+                1) è una semplice stringa che contiene del testo al suo interno.<br>
+                2) è un numero che contiene un valore numerale.<br>
+                3) è una struttura dati per contenere vari valori al suo interno, viene poi iterato (si leggono gli elementi in ordine) o per
+                qualsiasi altro scopo lo si vuole usare, esempio è : [1,2,3,"ciao",true] etc <br>
+                4) è uno dei tipi più importanti, lo spiegherò in dettaglio in seguito, in pratica è una variabile che contiene altre variabili. <br>
+                5) è un booleano true/false che può essere usato per le condizioni if/for/while etc<br>
+            </div><br><br>
+        </div>
+    <!------------------------------------------------------------>
+        <div class="wrapper">
+            <div class="title">
+                Oggetti
+            </div>
+            <div class="text">
+                Gli oggetti sono un tipo di variabile molto speciale dato che possono contenere altre variabili o anche funzioni al porprio interno.<br> 
+                In javascript quasi tutto "sotto sotto" è un oggetto, infatti, per esempio, una stringa contiene varie funzioni integrate da javascript 
+                in se che possono essere usate su una variabile stringa direttamente, per esempio "ciao".toUpperCase() per renderlo tutto maiuscolo. <br><br>
+
+                Un oggetto funziona a mo di chiave / valore, ogni chiave (chiamata key) in un oggetto, fa riferimento ad un valore. <br>
+                Per poter accedere ad un valore, si deve fare: nomeVariabileOggetto.nomeChiave ed esso ritornerà il valore assegnato a quella chiave
+                Esempio:
+        <pre>
+        <code class="language-javascript">
+    let oggetto = {
+        chiave1: 1,
+        chiave2: "ciao"
+        chiave3: [1,2,3,"ciao",true]
+        altroOggetto: {
+           chiave1: 1
+        }
+    }
+
+    console.log(oggetto.chiave1) //1
+    console.log(oggetto.altroOggetto.chiave1) //ciao
+    //per creare una nuova chiave, basta assegnare un valore
+    oggetto.chiave4 = "chiave nuova!"
+    //per modificare una chiave, basta assegnare un valore
+    oggetto.chiave2 += " arrivederci"
+    console.log(chaive2) //ciao arrivederci
+    </code>
+    </pre>
+    <!------------------------------------------------------------>
+        </div>
+        <div class="wrapper">
+            <div class="title">
+                Elemento per ID e modifica valore
+            </div>
+            <div class="text">
+                Questo è l'ultimo argomento di oggi, la modifica del valore di elementi html tramite javascript. <br>
+                Tramite javascript possiamo prendere tutti gli elementi presenti all'interno del codice html, lo possiamo fare in molti modi, ma se lo 
+                si deve fare per un singolo elemento specifico, la cosa migliore è usare un ID , ricorda l'ID è unico, un solo elemento DEVE averlo, in futuro
+                vedremo anche come prendere tutti gli elementi tramite le proprie caratteristiche, come nome della classe, nome del tag etc. 
+                <br>
+                Una volta preso un elemento tramite il proprio ID, possiamo metterlo all'interno di una variabile, questa variabile farà riferimento all'elemento
+                html che andremo a leggere / modificare. <br>
+                Ogni elemento ha molte funzioni e chiavi (oggetto) da poter leggere / scrivere per modificarne le caratteristiche, ma quelli che vedremo oggi sono solo 
+                per prendere un valore o metterlo. <br>
+                Questi sono .innerHTML e .value, entrambi possono essere scritti e letti, se scritti, andranno a modificare il valore all'interno dell'elemento stesso. 
+                <br><br>
+                Esempio: 
+            </div>
+        <pre>
+        <code class="language-html">
+    <button onclick="funzioneBottone(this)">Premi per modificare</button>
+    <input onclick="funzioneInput(this)" value="Premi per modificare"> 
+    <button onclick="funzioneBottone()" id="bottone">(bottone) Premi per modificare</button>
+    <input type="button" onclick="funzioneInput()" id="input" value="(input) Premi per modificare"> 
+    <script>
+        function funzioneBottone(){
+            let bottone = document.getElementById("bottone")
+            let testo = bottone.innerHTML + ", modificato"
+            bottone.innerHTML = testo
+            /*innerHTML prende tutto il testo HTML che è all'interno di un elemento,
+              esso però funziona solo per gli elementi che hanno html all'interno, per 
+              esempio <button>questo è html</button> che contiene html.
+              Mentre per gli elementi che non hanno html all'interno, come per esempio
+              un <input>, va usato .value
+
+              Un alternativa a .innerHTML è .innerText che ritorna solo il testo, escludendo tutti 
+              i tag HTML 
+            */
+        }
+        function funzioneInput(){
+            let input = document.getElementById("input")
+            let testo = input.value + ", modificato"
+            input.value = testo
+        }
+    </script>
+        </code>
+        </pre>
+        <button onclick="funzioneBottone()" id="bottone">(bottone) Premi per modificare</button>
+        <input type="button" onclick="funzioneInput()" id="input" value="(input) Premi per modificare"> 
+        <script>
+            function funzioneBottone(){
+                let bottone = document.getElementById("bottone")
+                let testo = bottone.innerHTML + ", modificato"
+                bottone.innerHTML = testo
+            }
+            function funzioneInput(){
+                let input = document.getElementById("input")
+                let testo = input.value + ", modificato"
+                input.value = testo
+            }
+        </script>
+        </div>
+        <div class="wrapper">
+            <div class="title">
+                Un favore per tutti
+            </div>
+            <div class="text">
+                Vi prego, INIZIATE ad indentare il codice, lo rende 100000000 volte più leggibile, se proprio non sapete farlo, 
+                utilizzate un IDE o un text editor che lo fa per voi, in questo corso avevo consigliato di scaricare vs code, se lo hai 
+                fatto, una volta finito il tuo codice, fai tasto destro sulla pagina su vs code e premi "format document". 
+                <br>
+                Per formattazione si intende mettere il codice "figlio" più a destra di quello padre, così da poterlo rendere più leggibile. <br> <br>
+
+                Esempio:
+            </div>
+        <pre>
+        <code class="language-html">
+    <div>
+        <div>
+            <button></button>
+        </div>
+    </div>
+    
+    <script>
+        function nomeFunction(){
+            let testo = "test"
+            if(testo !== "ciao"){
+                for(let i = 0; i< testo.length; i++){
+                    console.log(testo[i])
+                    //si, le stringhe sono array
+                }
+            }
+        }
+    </script>
+        </code>
+        </pre>
+<!------------------------------------------------------------>
+        <div class="wrapper" style="display: flex; align-items: center; flex-direction: column; ">
+            <div class="title">
+                Editor live!
+            </div>
+            <pre class="code" contenteditable="true">
+
+
+    &lt;button onclick="funzioneBottone()" id="bottone2">(bottone) Premi per modificare&lt;/button>
+    &lt;input type="button" onclick="funzioneInput()" id="input2" value="(input) Premi per modificare"> 
+    &lt;script>
+            function funzioneBottone(){
+                let bottone = document.getElementById("bottone2")
+                let testo = bottone.innerHTML + ", modificato"
+                bottone.innerHTML = testo
+            }
+            function funzioneInput(){
+                let input = document.getElementById("input2")
+                let testo = input.value + ", modificato"
+                input.value = testo
+            }
+    &lt;/script>
+    </pre>
+            <iframe id="iframe">
+            </iframe>
+        </div>
+        <!--FINE-->
+    </div>
+</body>
+<script>
+    document.querySelectorAll(".language-html").forEach(e => {
+        e.innerHTML = e.innerHTML.replaceAll("<", "&lt;")
+    })
+    document.querySelector(".code").addEventListener("input", function () {
+        let iframe = document.getElementById("iframe")
+        console.log(this.innerHTML)
+        iframe.contentDocument.body.innerHTML = this.innerText
+    })
+    document.getElementById("iframe").contentDocument.write(document.querySelector(".code").innerText)
+</script>
+
+</html>
