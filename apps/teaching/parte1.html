@@ -5,15 +5,21 @@
 <head>
     <meta charset="utf-8">
     <title>Impara Html css e js</title>
-    <meta name="description" content="Impara Html css e js">
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
+    <meta name="theme-color" content="#191B23">
+    <meta name="description" content="Impara HTML">
     <meta name="author" content="Specy">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+    <script src="/js/prism.js"></script>
+
 </head>
 
-<body>
+<body class="scroll-bar">
     <div class="partWrapper">
+        <a class="partBefore" href="../../index.html" style="background-color:#32cd32">  
+            Progetti
+        </a>
         <a class="partAfter" href="./parte2.html">
             Parte 2 (CSS)
         </a>
@@ -53,6 +59,44 @@
             </div>
         </div>
 
+<div class="wrapper">
+    <div class="title">
+        Template
+    </div>
+    <div class="text">
+        Ogni progetto inizia con un template html, io consiglio di usare questo: 
+
+
+    </div>
+    <pre>
+<code class="language-html">
+    &lt;!doctype html>
+    &lt;html lang="it">
+    &lt;head>
+        &lt;meta charset="utf-8">
+        &lt;meta name="description" content="Descrizione progetto">
+        &lt;meta name="author" content="Specy">
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+        &lt;meta name="theme-color" content="Scegli colore tema">
+        &lt;title>Il Tuo Titolo&lt;/title>
+        &lt;link rel="stylesheet" href="ilTuoStile.css">
+        &lt;link rel="shortcut icon" type="image/png" href="ilTuoFavicon.png"/>
+    &lt;/head>
+    
+
+    &lt;body>
+    &lt;/body>
+    
+
+    &lt;script>
+    &lt;/script>
+    &lt;/html>
+    </code>
+    </pre>
+    <div class="text">
+        il meta name="viewport" serve per far visualizzare meglio il sito su telefoni
+    </div>
+</div>
 <div class="wrapper">
     <div class="title">
         div
@@ -273,10 +317,10 @@
 </div>
 <pre>
 <code class="language-html">
-    <img src="/images/owo.jpg">
+    <img src="owo.jpg">
 </code>
 </pre>
-<img src="/images/owo.jpg">
+<img src="owo.jpg">
 </div>
 
 <!------------------------------------------------------------------->

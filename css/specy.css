@@ -8,7 +8,8 @@
     padding: 0;
 }
 
-body,html {
+body,
+html {
     min-height: 100vh;
     box-sizing: border-box;
     width: 100%;
@@ -40,6 +41,10 @@ body,html {
     justify-content: center;
 }
 
+.centerY {
+    align-items: center;
+}
+
 .to-left {
     justify-content: flex-start;
 }
@@ -47,14 +52,16 @@ body,html {
 .to-right {
     justify-content: flex-end;
 }
-.to-bottom{
-    align-content: flex-end;
-}
-.align-all-center * {
-    align-items: center;
+
+.to-top{
+    align-items: flex-start;
 }
 
-.centerY {
+.to-bottom {
+    align-content: flex-end;
+}
+
+.align-all-center * {
     align-items: center;
 }
 
@@ -71,12 +78,12 @@ body,html {
 /*--------------------Buttons and elements--------------------*/
 .button {
     border: none;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     margin: 0.2rem;
     cursor: pointer;
     border-radius: 0.7rem;
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: bold;
     justify-content: center;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
@@ -96,7 +103,13 @@ body,html {
     flex: 1;
 }
 
+.circle {
+    border-radius: 50%;
+}
 
+.rounded {
+    border-radius: 20rem;
+}
 
 
 /*--------------------Layers--------------------*/
@@ -177,39 +190,39 @@ body,html {
 
 /*--------------------Margin and padding--------------------*/
 .margin-1 {
-    margin: 1rem;
+    margin: 1rem !important;
 }
 
 .margin-2 {
-    margin: 2rem;
+    margin: 2rem !important;
 }
 
 .margin-05 {
-    margin: 0.5rem;
+    margin: 0.5rem !important;
 }
 
-.margin-bottom-1{
-    margin-bottom: 1rem;
+.margin-bottom-1 {
+    margin-bottom: 1rem !important;
 }
 
-.margin-bottom-2{
-    margin-bottom: 2rem;
+.margin-bottom-2 {
+    margin-bottom: 2rem !important;
 }
 
-.margin-bottom-4{
-    margin-bottom: 5rem;
+.margin-bottom-4 {
+    margin-bottom: 5rem !important;
 }
 
-.margin-bottom-6{
-    margin-bottom: 6rem;
+.margin-bottom-6 {
+    margin-bottom: 6rem !important;
 }
 
 .padding-1 {
-    padding: 1rem;
+    padding: 1rem !important;
 }
 
 .padding-05 {
-    padding: 0.5rem;
+    padding: 0.5rem !important;
 }
 
 
@@ -217,9 +230,10 @@ body,html {
 
 /*--------------------Wrappers--------------------*/
 .div-60 {
-    width: 60vw;
+    width: 60%;
     line-height: 1.5rem;
     padding: 1rem;
+    box-sizing: border-box;
     border-radius: 0.8rem;
     margin: 1rem;
 }
@@ -227,6 +241,7 @@ body,html {
 .container {
     line-height: 1.5rem;
     padding: 0.5rem;
+    box-sizing: border-box;
     border-radius: 0.8rem;
     margin: 0.5rem;
 }
@@ -236,58 +251,67 @@ body,html {
 
 
 /*--------------------colors--------------------*/
-.warn {
-    background-color: #f54242;
+.red {
+    background-color: #f54242 !important;
     color: white;
 }
 
-.success {
-    background-color: #32cd32;
-    color: white;
-}
-
-.dm-normal {
-    background-color: #2d304e;
-    color: white;
-}
-
-.normal {
-    background-color: #dbe3f7;
+.yellow{
+    background-color: #f1bb4e !important;
     color: rgb(20, 20, 20);
 }
 
+.green {
+    background-color: #32cd32 !important;
+    color: white;
+}
+
+.purple{
+    background-color: #9a4ef1 !important;
+    color: white;
+}
+.darkBlue {
+    background-color: #2d304e !important;
+    color: white;
+}
+
+.cyan {
+    background-color: #4e9af1 !important;
+    color: white;
+}
+
 .darkTeal {
-    background-color: #187b69;
+    background-color: #187b69 !important;
     color: white;
 }
 
 .gray {
-    background-color: #d8d8d8;
+    background-color: #d8d8d8 !important;
     color: rgb(20, 20, 20);
 }
 
 .text-white {
-    color: white;
+    color: white !important;
 }
 
 .text-red {
-    color: #f54242;
+    color: #f54242 !important;
 }
 
 .text-green {
-    color: #32cd32;
+    color: #32cd32 !important;
 }
 
 .text-darkTeal {
-    color: #187b69;
+    color: #187b69 !important;
 }
 
 .text-dark {
-    color: rgb(20, 20, 20);
+    color: rgb(20, 20, 20) !important;
 }
 
 .text-gray {
-    color: #a8a8a8;
+    color: #a8a8a8 !important;
 }
 
 
@@ -320,7 +344,7 @@ body,html {
     font-weight: bold;
 }
 
-.footer-wrapper{
+.footer-wrapper {
     display: flex;
     flex: 1;
     width: 100%;
@@ -328,12 +352,12 @@ body,html {
     align-items: flex-end;
 }
 
-.footer{
+.footer {
     min-height: 4rem;
     width: 100%;
 }
 
-.navbar{
+.navbar {
     min-height: 2rem;
     display: flex;
     align-items: center;
@@ -342,12 +366,12 @@ body,html {
     box-sizing: border-box;
 }
 
-.no-highlight{
+.no-highlight {
     -webkit-tap-highlight-color: transparent;
     user-select: none;
 }
 
-.no-outline{
+.no-outline {
     outline: none;
 }
 
@@ -367,36 +391,77 @@ body,html {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-  }
+}
 
+.transition{
+    transition: 0.3s;
+}
+
+.line-break{
+    margin: 1rem;
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+    background-color: #d8d8d8;
+    height: 0.15rem;
+    display: flex;
+    justify-content: center;
+
+}
+.line-break-text{
+    background-color: #d8d8d8;
+    color: rgb(20, 20, 20);;
+    padding: 0.7rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    line-height: 0;
+    margin-top: -0.7rem;
+    border-radius: 0.5rem;
+}
+
+.scroll-bar::-webkit-scrollbar {
+    width: 8px;
+  }
+.scroll-bar::-webkit-scrollbar-track {
+    background:rgb(99, 99, 99);
+    overflow: hidden;
+  }
+.scroll-bar::-webkit-scrollbar-thumb {
+    background: #dddddd;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+.scroll-bar::-webkit-scrollbar-thumb:hover {
+    opacity: 0.6;
+  }
 @keyframes fadeIn {
     0% {
-      opacity: 0;
+        opacity: 0;
     }
-  
+
     100% {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  
+}
+
 @keyframes fadeOut {
     0% {
-      opacity: 1;
+        opacity: 1;
     }
-  
+
     100% {
-      opacity: 0;
+        opacity: 0;
     }
 }
 
 /*--------------------Media queries--------------------*/
 @media only screen and (orientation:portrait) {
     .div-60 {
-        width: 85vw;
+        width: 95%;
         border-radius: 0.5rem;
     }
+
     #floatingMessage {
         bottom: 8vw;
         width: 70vw;
-      }
+    }
 }

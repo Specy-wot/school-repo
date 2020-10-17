@@ -9,6 +9,22 @@
 	color: #dadada;
 	outline: none;
 }
+
+.scroll-bar::-webkit-scrollbar {
+    width: 8px;
+  }
+.scroll-bar::-webkit-scrollbar-track {
+    background:rgb(99, 99, 99);
+    overflow: hidden;
+  }
+.scroll-bar::-webkit-scrollbar-thumb {
+    background: #dddddd;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+.scroll-bar::-webkit-scrollbar-thumb:hover {
+    opacity: 0.6;
+  }
 pre[class*="language-"],
 code[class*="language-"] {
 	color: #d4d4d4;

@@ -5,14 +5,16 @@
 <head>
     <meta charset="utf-8">
     <title>Impara Html css e js</title>
-    <meta name="description" content="Impara Html css e js">
+    <meta name="description" content="Impara JavaScript">
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
+    <meta name="theme-color" content="#191B23">
     <meta name="author" content="Specy">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+    <script src="/js/prism.js"></script>
 </head>
 
-<body>
+<body class="scroll-bar">
     <div class="partWrapper">
         <a class="partBefore" href="./parte2.html">
             Parte 2 (CSS)
@@ -29,6 +31,7 @@
             <div class="text">
                 Abbiamo visto come html e css riescono insieme a creare il corpo di un sito, ma la mente vera e propria risiede in javascript. <br>
                 Nel 2020 ormai si può fare di tutto grazie a javascript, un singolo linguaggio ti prepara per creare siti, app, server, programmi etc
+                <br>
                 Esso è uno degli aspetti più importanti dello sviluppo web dato che riesce a dare una funzionalità alla pagina oltre ad essere solo bella da vedere. 
                 <br><br>
                 Con JavaScript si possono fare le seguenti cose:
@@ -60,7 +63,8 @@
             <div class="text">
                 Per sviluppare con javascript è molto utile utilizzare la cosidetta "console" del browser, con la console possiamo inviare dal codice 
                 un testo che verrà mostrato nella console, così da facilitare il debug e aiutare nello sviluppo. <br>
-                Ogni browser su computer ha una console, la maggior parte si apre premendo "F12" e premendo su "console". 
+                Ogni browser su computer ha una console, la maggior parte si apre premendo "F12" e premendo su "console".
+                (In pratica la console è l'equivalente di System.out.print() in java)
                 <br><br>
                 Tramite la console potremo vedere anche tutti gli errori generati dal javascript e molto altro. 
             </div>
@@ -392,8 +396,9 @@
                 In javascript quasi tutto "sotto sotto" è un oggetto, infatti, per esempio, una stringa contiene varie funzioni integrate da javascript 
                 in se che possono essere usate su una variabile stringa direttamente, per esempio "ciao".toUpperCase() per renderlo tutto maiuscolo. <br><br>
 
-                Un oggetto funziona a mo di chiave / valore, ogni chiave (chiamata key) in un oggetto, fa riferimento ad un valore. <br>
-                Per poter accedere ad un valore, si deve fare: nomeVariabileOggetto.nomeChiave ed esso ritornerà il valore assegnato a quella chiave
+                Un oggetto funziona a mo di chiave / valore, ogni chiave (key) in un oggetto, fa riferimento ad un valore. <br>
+                Ogni chiave, è una proprietà dell'oggetto a cui fà parte e poter accedere ad un valore, si deve fare: nomeVariabileOggetto.nomeChiave ed esso ritornerà
+                il valore assegnato a quella proprietà <br><br>
                 Esempio:
         <pre>
         <code class="language-javascript">
@@ -415,6 +420,7 @@
     console.log(chaive2) //ciao arrivederci
     </code>
     </pre>
+    </div>
     <!------------------------------------------------------------>
         </div>
         <div class="wrapper">
@@ -422,23 +428,21 @@
                 Elemento per ID e modifica valore
             </div>
             <div class="text">
-                Questo è l'ultimo argomento di oggi, la modifica del valore di elementi html tramite javascript. <br>
+                Questo è l'ultimo argomento di oggi, la modifica del valore di elementi html tramite javascript. <br><br>
                 Tramite javascript possiamo prendere tutti gli elementi presenti all'interno del codice html, lo possiamo fare in molti modi, ma se lo 
                 si deve fare per un singolo elemento specifico, la cosa migliore è usare un ID , ricorda l'ID è unico, un solo elemento DEVE averlo, in futuro
                 vedremo anche come prendere tutti gli elementi tramite le proprie caratteristiche, come nome della classe, nome del tag etc. 
-                <br>
+                <br><br>
                 Una volta preso un elemento tramite il proprio ID, possiamo metterlo all'interno di una variabile, questa variabile farà riferimento all'elemento
-                html che andremo a leggere / modificare. <br>
+                html che andremo a leggere / modificare. <br><br>
                 Ogni elemento ha molte funzioni e chiavi (oggetto) da poter leggere / scrivere per modificarne le caratteristiche, ma quelli che vedremo oggi sono solo 
-                per prendere un valore o metterlo. <br>
+                per prendere un valore o metterlo. <br><br>
                 Questi sono .innerHTML e .value, entrambi possono essere scritti e letti, se scritti, andranno a modificare il valore all'interno dell'elemento stesso. 
                 <br><br>
                 Esempio: 
             </div>
         <pre>
-        <code class="language-html">
-    <button onclick="funzioneBottone(this)">Premi per modificare</button>
-    <input onclick="funzioneInput(this)" value="Premi per modificare"> 
+        <code class="language-html"> 
     <button onclick="funzioneBottone()" id="bottone">(bottone) Premi per modificare</button>
     <input type="button" onclick="funzioneInput()" id="input" value="(input) Premi per modificare"> 
     <script>
@@ -513,6 +517,7 @@
     </script>
         </code>
         </pre>
+    </div>
 <!------------------------------------------------------------>
         <div class="wrapper" style="display: flex; align-items: center; flex-direction: column; ">
             <div class="title">

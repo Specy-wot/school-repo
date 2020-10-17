@@ -191,3 +191,33 @@ input[type = "checkbox"]{
     justify-content: flex-end;
     align-items: flex-end;
  }
+ .scroll-bar::-webkit-scrollbar {
+    width: 8px;
+  }
+.scroll-bar::-webkit-scrollbar-track {
+    background:rgb(99, 99, 99);
+    overflow: hidden;
+  }
+.scroll-bar::-webkit-scrollbar-thumb {
+    background: #dddddd;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+.scroll-bar::-webkit-scrollbar-thumb:hover {
+    opacity: 0.6;
+  }
+  .partWrapper{
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+}
+.partWrapper *{
+	text-decoration: none;
+}
+.partBefore{
+	margin-right: auto;
+	background-color: #569CD6;
+	color: white;
+	padding: 0.6rem;
+	border-radius: 0.6rem;
+}
