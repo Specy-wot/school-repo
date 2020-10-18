@@ -114,43 +114,35 @@ html {
 
 /*--------------------Layers--------------------*/
 .dm-L1 {
-    background: rgb(27, 25, 35);
-    color: white;
+    background: rgb(27, 25, 35) !important;
 }
 
 .dm-L2 {
-    background: rgb(42, 41, 51);
-    color: white;
+    background: rgb(42, 41, 51) !important;
 }
 
 .dm-L3 {
-    background: #363636;
-    color: white;
+    background: #363636 !important;
 }
 
 .dm-L4 {
-    background: #464646;
-    color: white;
+    background: #464646 !important;
 }
 
 .wm-L1 {
-    background: white;
-    color: rgb(20, 20, 20);
+    background: white !important;
 }
 
 .wm-L2 {
-    background: rgb(238, 238, 238);
-    color: rgb(20, 20, 20);
+    background: rgb(238, 238, 238) !important;
 }
 
 .wm-L3 {
-    background: #c0c0c0;
-    color: rgb(20, 20, 20);
+    background: #c0c0c0 !important;
 }
 
 .wm-L4 {
-    background: #939393;
-    color: rgb(20, 20, 20);
+    background: #939393 !important;
 }
 
 
@@ -246,7 +238,10 @@ html {
     margin: 0.5rem;
 }
 
+.container-border{
+    border: 2px solid #d8d8d8;
 
+}
 
 
 
@@ -355,6 +350,8 @@ html {
 .footer {
     min-height: 4rem;
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .navbar {
@@ -409,7 +406,7 @@ html {
 }
 .line-break-text{
     background-color: #d8d8d8;
-    color: rgb(20, 20, 20);;
+    color: rgb(93 93 93);
     padding: 0.7rem;
     font-size: 0.8rem;
     font-weight: bold;
@@ -417,7 +414,23 @@ html {
     margin-top: -0.7rem;
     border-radius: 0.5rem;
 }
+.container-title{
+    background-color: #d8d8d8;
+    color: rgb(93 93 93);
+    padding: 0.7rem 0.4rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    line-height: 0;
+    margin-top: -1.3rem;
+    border-radius: 0.5rem;
+    width: fit-content;
+}
 
+.center-self{
+    margin-left:auto !important;
+    margin-right: auto !important;
+    display: block;
+}
 .scroll-bar::-webkit-scrollbar {
     width: 8px;
   }
