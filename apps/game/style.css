@@ -1,4 +1,4 @@
-canvas{
+#canvas{
     width: 90vh;
     height: 90vh;
     border-radius: 1rem;
@@ -8,13 +8,46 @@ canvas{
 *{
     outline: none;
 }
-#score,#highscore{
-    margin-left: auto;
+body{
+    overflow: hidden;
 }
 .menu{
     position: absolute;
     right: 0;
     box-sizing: border-box;
     width: 15vw;
-    height: 100%;
+    height: 100vh;
+}
+#joy1{
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    bottom: 2rem;
+    width: 15vw;
+    height: 15vw;
+}
+.rotate{
+    display: none;
+}
+@media screen and (orientation:portrait){
+    #canvas{
+        height: 100vh;
+        width: 100vh;
+        position: absolute;
+    }
+    .rotate{
+        position: absolute;
+        width: 100vw;
+        z-index: 10;
+        height: 100vh;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        font-size: 4rem;
+        color: white;
+        opacity: 0.8;
+    }
+    .menu{
+        display: none;
+    }
 }

@@ -5,34 +5,43 @@
     <meta charset="utf-8">
     <meta name="description" content="Fight for survival in a corona world!">
     <meta name="author" content="Specy">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="rgb(96,25,25)">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable = n">
+    <meta name="theme-color" content="#f54242">
     <title>Corona world</title>
     <link rel="stylesheet" href="/css/specy.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="shortcut icon" type="image/png" href="./game.png" />
+    <script src="./joystick.js"></script>
 </head>
 
 
 <body class="column centerX centerY dm-L1">
-    <a class="button green" href="../../index.html" style="position: absolute; left: 0.5rem; top: 0.5rem; text-decoration: none;">  
-        Projects
-    </a>
-    <div class="menu dm-L2 padding-1 column">
+    <div class="rotate dm-L1">
+        Rotate the phone!
+    </div>
+    <div class="menu dm-L2 padding-05 column" style="left: 0; ">
+            <button class="button green" onclick="window.location='/'" style="padding: 0.5rem 0">
+                Projects
+            </button>
+    </div>
+    <div class="menu dm-L2 padding-05 column">
         <button class="button green" onclick="game()" id="play">
             Retry
         </button>
-        <div class="row text-white" style="margin-top: 2rem;">
+        <div class="row text-white" style="margin-top: 2rem; justify-content: space-between; font-weight: bold;">
             <div>
                 Score:
             </div>
             <div id="score">0</div>
         </div>
-        <div class="row text-white" style="margin-top: 2rem;">
+        <div class="row text-white" style="margin-top: 2rem; justify-content: space-between; font-weight: bold;">
             <div>
-                Highscore:
+                Best:
             </div>
             <div id="highscore">0</div>
+        </div>
+        <div id="joy1">
+
         </div>
     </div>
     <canvas id="canvas"></canvas>
@@ -40,6 +49,15 @@
 
 
 <script>
+    let jSize = window.getComputedStyle(document.getElementById("joy1")).getPropertyValue("width").replace("px","")
+    let joyStick = new JoyStick("joy1",{width:jSize,height:jSize})
+    window.addEventListener("orientationchange", function() {
+        setTimeout(function(){
+            document.getElementById("joy1").innerHTML = ""
+            let jSize = window.getComputedStyle(document.getElementById("joy1")).getPropertyValue("width").replace("px","")
+            joyStick = new JoyStick("joy1",{width:jSize,height:jSize})
+        },100)
+    })
     let score = 0
     let highscore = localStorage.getItem("highscore")
     if (highscore == null) {
@@ -184,7 +202,7 @@
                 keys.left.isPressed = false
                 break
             }
-            case 13: {
+            case 32: {
                 document.getElementById("play").click()
             }
         }
@@ -214,23 +232,61 @@
         if (keys.down.isPressed) keys.down.trigger()
         if (keys.left.isPressed) keys.left.trigger()
         if (keys.right.isPressed) keys.right.trigger()
+        switch(joyStick.GetDir()){
+            case "NE": {
+                keys.up.trigger()
+                keys.right.trigger()
+                break
+            }
+            case "N": {
+                keys.up.trigger()
+                break
+            }
+            case "E": {
+                keys.right.trigger()
+                break
+            }
+            case "NW": {
+                keys.up.trigger()
+                keys.left.trigger()
+                break
+            }
+            case "W": {
+                keys.left.trigger()
+                break
+            }
+            case "SW": {
+                keys.down.trigger()
+                keys.left.trigger()
+                break
+            }
+            case "S": {
+                keys.down.trigger()
+                break
+            }
+            case "SE": {
+                keys.right.trigger()
+                keys.down.trigger()
+                break
+            }
+        }
     }
     setInterval(function () {
         player.outline += 0.5
     }, 500)
 
     function generateNewPlayer() {
-        let numOfPeople = score / 3 / 150
+        let numOfPeople = score/3/100
         for (let i = 0; i < numOfPeople; i++) {
             people.push(new Person())
         }
+        console.log(numOfPeople)
         let randomTime = Math.random() * 4000 + 2000
         setTimeout(function () {
             generateNewPlayer()
         }, randomTime)
     }
     generateNewPlayer()
-
     function calculatePeople() {
         for (let i = 0; i < people.length; i++) {
             let dx = people[i].x - player.x
