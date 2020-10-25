@@ -20,9 +20,9 @@
         Rotate the phone!
     </div>
     <div class="menu dm-L2 padding-05 column" style="left: 0; ">
-            <button class="button green" onclick="window.location='/'" style="padding: 0.5rem 0">
-                Projects
-            </button>
+        <button class="button green" onclick="window.location='/'" style="padding: 0.5rem 0">
+            Projects
+        </button>
     </div>
     <div class="menu dm-L2 padding-05 column">
         <button class="button green" onclick="game()" id="play">
@@ -49,14 +49,21 @@
 
 
 <script>
-    let jSize = window.getComputedStyle(document.getElementById("joy1")).getPropertyValue("width").replace("px","")
-    let joyStick = new JoyStick("joy1",{width:jSize,height:jSize})
-    window.addEventListener("orientationchange", function() {
-        setTimeout(function(){
+    let jSize = window.getComputedStyle(document.getElementById("joy1")).getPropertyValue("width").replace("px", "")
+    let joyStick = new JoyStick("joy1", {
+        width: jSize,
+        height: jSize
+    })
+    window.addEventListener("orientationchange", function () {
+        setTimeout(function () {
             document.getElementById("joy1").innerHTML = ""
-            let jSize = window.getComputedStyle(document.getElementById("joy1")).getPropertyValue("width").replace("px","")
-            joyStick = new JoyStick("joy1",{width:jSize,height:jSize})
-        },100)
+            let jSize = window.getComputedStyle(document.getElementById("joy1")).getPropertyValue(
+                "width").replace("px", "")
+            joyStick = new JoyStick("joy1", {
+                width: jSize,
+                height: jSize
+            })
+        }, 100)
     })
     let score = 0
     let highscore = localStorage.getItem("highscore")
@@ -115,14 +122,14 @@
             this.y = 0
             let ranX = Math.random()
             let ranY = Math.random()
+            let type = Math.floor(Math.random() * 4 + 1)
             this.direction = 1
-            if (ranX > 0.5 && ranY > 0.5) this.x = world.sizeX, this.y = parseInt(world.sizeY * ranY), this
-                .direction = 7
-            if (ranX > 0.5 && ranY < 0.5) this.x = parseInt(world.sizeX * ranX), this.y = 0, this.direction = 1
-            if (ranX < 0.5 && ranY > 0.5) this.x = 0, this.y = parseInt(world.sizeY * ranY), this.direction = 4
-            if (ranX < 0.5 && ranY < 0.5) this.x = parseInt(world.sizeX * ranX), this.y = world.sizeY, this
-                .direction = 8
+            if (type == 1) this.x = parseInt(Math.random() * world.sizeX), this.direction = 1
+            if (type == 2) this.y = parseInt(Math.random() * world.sizeX), this.direction = 4
+            if (type == 3) this.x = parseInt(Math.random() * world.sizeX), this.y = world.sizeY, this.direction = 8
+            if (type == 4) this.y = parseInt(Math.random() * world.sizeX), this.x = world.sizeX, this.direction = 7
             this.infected = false
+            if (Math.random() > 0.7) this.infected = true
             this.size = 0
             this.steps = parseInt(Math.random() * 200 + 50)
             this.infectRadius = 0
@@ -155,7 +162,7 @@
         document.getElementById("canvas").style.backgroundColor = ""
         people = []
         player = new Player()
-        let peopleCount = parseInt(Math.random() * 20 + 10)
+        let peopleCount = parseInt(Math.random() * 20 + 20)
         for (let i = 0; i < peopleCount; i++) {
             people.push(new Person())
         }
@@ -232,7 +239,7 @@
         if (keys.down.isPressed) keys.down.trigger()
         if (keys.left.isPressed) keys.left.trigger()
         if (keys.right.isPressed) keys.right.trigger()
-        switch(joyStick.GetDir()){
+        switch (joyStick.GetDir()) {
             case "NE": {
                 keys.up.trigger()
                 keys.right.trigger()
@@ -272,81 +279,92 @@
         }
     }
     setInterval(function () {
-        player.outline += 0.5
+        player.outline += 0.2
     }, 500)
 
     function generateNewPlayer() {
-        let numOfPeople = score/3/100
+        let numOfPeople = score / 3 / 100
         for (let i = 0; i < numOfPeople; i++) {
             people.push(new Person())
         }
-        console.log(numOfPeople)
         let randomTime = Math.random() * 4000 + 2000
         setTimeout(function () {
             generateNewPlayer()
         }, randomTime)
     }
     generateNewPlayer()
+
     function calculatePeople() {
         for (let i = 0; i < people.length; i++) {
-            let dx = people[i].x - player.x
-            let dy = people[i].y - player.y
-            var collision = Math.sqrt(dx * dx + dy * dy);
-            if (collision < people[i].size + player.outline) {
-                dead = true
-                document.getElementById("play").disabled = false
-                document.getElementById("canvas").style.backgroundColor = "rgb(96 25 25)"
-                if (score > highscore) {
-                    highscore = score
-                    localStorage.setItem("highscore", parseInt(highscore / 3))
-                    document.getElementById("highscore").innerHTML = parseInt(highscore / 3)
+
+            if (people[i].infected) {
+                let dx = people[i].x - player.x
+                let dy = people[i].y - player.y
+                var collision = Math.sqrt(dx * dx + dy * dy);
+                if (collision < people[i].size + player.outline) {
+                    dead = true
+                    document.getElementById("play").disabled = false
+                    document.getElementById("canvas").style.backgroundColor = "rgb(96 25 25)"
+                    if (score > highscore) {
+                        highscore = score
+                        localStorage.setItem("highscore", parseInt(highscore / 3))
+                        document.getElementById("highscore").innerHTML = parseInt(highscore / 3)
+                    }
+                }
+                for (let j = 0; j < people.length; j++) {
+                    let dx = people[i].x - people[j].x
+                    let dy = people[i].y - people[j].y
+                    var collision = Math.sqrt(dx * dx + dy * dy);
+                    if (collision < people[i].size + people[j].size) people[j].infected = true
                 }
             }
-            drawCircle(people[i].x, people[i].y, people[i].size, people[i].color)
+            let color = people[i].infected ? people[i].color : "gray"
+            drawCircle(people[i].x, people[i].y, people[i].size, color)
             if (people[i].steps > 0) {
+                let speed = (world.sizeX / 30 - 10) / people[i].size
                 switch (people[i].direction) {
                     case 1: {
                         //up
-                        people[i].y++
+                        people[i].y += speed
                         break;
                     }
                     case 2: {
                         //down
-                        people[i].y--
+                        people[i].y -= speed
                         break;
                     }
                     case 3: {
                         //left
-                        people[i].x--
+                        people[i].x -= speed
                         break;
                     }
                     case 4: {
                         //right
-                        people[i].x++
+                        people[i].x += speed
                         break;
                     }
                     case 5: {
                         //up left
-                        people[i].x--
-                        people[i].y++
+                        people[i].x -= speed
+                        people[i].y += speed
                         break;
                     }
                     case 6: {
                         //up right
-                        people[i].x++
-                        people[i].y++
+                        people[i].x += speed
+                        people[i].y += speed
                         break;
                     }
                     case 7: {
                         //down left
-                        people[i].x--
-                        people[i].y--
+                        people[i].x -= speed
+                        people[i].y -= speed
                         break;
                     }
                     case 8: {
                         //down right
-                        people[i].x++
-                        people[i].y--
+                        people[i].x += speed
+                        people[i].y -= speed
                         break;
                     }
                 }
