@@ -1,0 +1,41 @@
+
+*{
+    outline: none;
+}
+.searchBar{
+    border: none;
+    font-size: 1.2rem;
+    padding-left: 4rem;
+    flex: 1;
+}
+.search{
+    border: none;
+    border-left: 2px solid #5f5f5f;
+    color: #5f5f5f;
+    background-color: #b3d8ff;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+}
+.search:hover{
+    background-color: white;
+}
+.property{
+    height: 1rem;
+    padding:0.5rem;
+    font-size: 0.8rem;
+    min-width: 3rem;
+    color: white;
+    align-items: center;
+    margin: 0.5rem;
+    margin-top: 0;
+}
+.innerProp{
+    height: 100%;
+    min-width: 1rem;
+    max-width: 10rem;
+    border-radius: 0.2rem;
+    margin: 0 0.5rem;
+    color: black;
+    overflow: hidden;
+    white-space: nowrap;
+}

@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Fight for survival in a corona world!">
+    <meta name="author" content="Specy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="rgb(96,25,25)">
+    <title>Corona world</title>
+    <link rel="stylesheet" href="/css/specy.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" type="image/png" href="./game.png" />
+</head>
+
+
+<body class="column centerX centerY dm-L1">
+    <div class="menu dm-L2 padding-1 column">
+        <button class="button green" onclick="game()" id="play">
+            Retry
+        </button>
+        <div class="row text-white" style="margin-top: 2rem;">
+            <div>
+                Score:
+            </div>
+            <div id="score">0</div>
+        </div>
+        <div class="row text-white" style="margin-top: 2rem;">
+            <div>
+                Highscore:
+            </div>
+            <div id="highscore">0</div>
+        </div>
+    </div>
+    <canvas id="canvas"></canvas>
+</body>
+
+
+<script>
+    let score = 0
+    let highscore = localStorage.getItem("highscore")
+    if (highscore == null) {
+        highscore = 0
+    } else {
+        highscore = parseInt(highscore)
+        document.getElementById("highscore").innerHTML = highscore
+    }
+    let canvas = document.getElementById("canvas")
+    let ctx = canvas.getContext("2d")
+    let world = {
+        sizeX: 1000,
+        sizeY: 1000
+    }
+    canvas.height = world.sizeY
+    canvas.width = world.sizeX
+    class Player {
+        constructor() {
+            this.x = world.sizeX / 2
+            this.y = world.sizeY / 2
+            this.size = 5
+            this.outline = 5
+        }
+    }
+    let player = new Player()
+    let keys = {
+        up: {
+            isPressed: false,
+            trigger: () => {
+                if (player.y < world.sizeY) player.y += 3
+            }
+        },
+        down: {
+            isPressed: false,
+            trigger: () => {
+                if (player.y > 0) player.y -= 3
+            }
+        },
+        left: {
+            isPressed: false,
+            trigger: () => {
+                if (player.x > 0) player.x -= 3
+            }
+        },
+        right: {
+            isPressed: false,
+            trigger: () => {
+                if (player.x < world.sizeX) player.x += 3
+            }
+        }
+    }
+    class Person {
+        constructor() {
+            this.x = 0
+            this.y = 0
+            let ranX = Math.random()
+            let ranY = Math.random()
+            this.direction = 1
+            if (ranX > 0.5 && ranY > 0.5) this.x = world.sizeX, this.y = parseInt(world.sizeY * ranY), this
+                .direction = 7
+            if (ranX > 0.5 && ranY < 0.5) this.x = parseInt(world.sizeX * ranX), this.y = 0, this.direction = 1
+            if (ranX < 0.5 && ranY > 0.5) this.x = 0, this.y = parseInt(world.sizeY * ranY), this.direction = 4
+            if (ranX < 0.5 && ranY < 0.5) this.x = parseInt(world.sizeX * ranX), this.y = world.sizeY, this
+                .direction = 8
+            this.infected = false
+            this.size = 0
+            this.steps = parseInt(Math.random() * 200 + 50)
+            this.infectRadius = 0
+            this.color = getRandomColor()
+            this.size = parseInt(Math.random() * (world.sizeX / 30) + 10)
+            this.infectRadius = parseInt(Math.random() * (world.sizeX / 400) + this.size)
+        }
+    }
+    let people = []
+
+
+    function handleFrame() {
+        if (dead) return
+        score++
+        document.getElementById("score").innerHTML = parseInt(score / 3)
+        eraseCanvas()
+        calculatePeople()
+        handlePlayerPosition()
+        drawCircle(player.x, player.y, player.size, "red")
+        drawOutline(player.x, player.y, player.outline)
+        window.requestAnimationFrame(handleFrame)
+    }
+
+    let dead = false
+
+    function game() {
+        document.getElementById("play").disabled = true
+        dead = false
+        score = 0
+        document.getElementById("canvas").style.backgroundColor = ""
+        people = []
+        player = new Player()
+        let peopleCount = parseInt(Math.random() * 20 + 10)
+        for (let i = 0; i < peopleCount; i++) {
+            people.push(new Person())
+        }
+        window.requestAnimationFrame(handleFrame)
+    }
+    game()
+    document.addEventListener("keydown", function (e) {
+        let keyCode = e.keyCode
+        switch (keyCode) {
+            case 87: {
+                keys.up.isPressed = true
+                break
+            }
+            case 68: {
+                keys.right.isPressed = true
+                break
+            }
+            case 83: {
+                keys.down.isPressed = true
+                break
+            }
+            case 65: {
+                keys.left.isPressed = true
+                break
+            }
+        }
+    })
+    document.addEventListener("keyup", function (e) {
+        let keyCode = e.keyCode
+        switch (keyCode) {
+            case 87: {
+                keys.up.isPressed = false
+                break
+            }
+            case 68: {
+                keys.right.isPressed = false
+                break
+            }
+            case 83: {
+                keys.down.isPressed = false
+                break
+            }
+            case 65: {
+                keys.left.isPressed = false
+                break
+            }
+            case 13: {
+                document.getElementById("play").click()
+            }
+        }
+    })
+
+    function eraseCanvas() {
+        ctx.clearRect(0, 0, world.sizeX, world.sizeY)
+    }
+
+    function drawCircle(x, y, size, color) {
+        ctx.fillStyle = color
+        ctx.beginPath()
+        ctx.arc(x, world.sizeY - y, size, 0, 2 * Math.PI)
+        ctx.fill()
+    }
+
+    function drawOutline(x, y, size) {
+        ctx.strokeStyle = "red"
+        ctx.lineWidth = 3
+        ctx.beginPath()
+        ctx.arc(x, world.sizeY - y, size, 0, 2 * Math.PI)
+        ctx.stroke()
+    }
+
+    function handlePlayerPosition() {
+        if (keys.up.isPressed) keys.up.trigger()
+        if (keys.down.isPressed) keys.down.trigger()
+        if (keys.left.isPressed) keys.left.trigger()
+        if (keys.right.isPressed) keys.right.trigger()
+    }
+    setInterval(function () {
+        player.outline += 0.5
+    }, 500)
+
+    function generateNewPlayer() {
+        let numOfPeople = score / 3 / 150
+        for (let i = 0; i < numOfPeople; i++) {
+            people.push(new Person())
+        }
+        let randomTime = Math.random() * 4000 + 2000
+        setTimeout(function () {
+            generateNewPlayer()
+        }, randomTime)
+    }
+    generateNewPlayer()
+
+    function calculatePeople() {
+        for (let i = 0; i < people.length; i++) {
+            let dx = people[i].x - player.x
+            let dy = people[i].y - player.y
+            var collision = Math.sqrt(dx * dx + dy * dy);
+            if (collision < people[i].size + player.outline) {
+                dead = true
+                document.getElementById("play").disabled = false
+                document.getElementById("canvas").style.backgroundColor = "rgb(96 25 25)"
+                if (score > highscore) {
+                    highscore = score
+                    localStorage.setItem("highscore", parseInt(highscore / 3))
+                    document.getElementById("highscore").innerHTML = parseInt(highscore / 3)
+                }
+            }
+            drawCircle(people[i].x, people[i].y, people[i].size, people[i].color)
+            if (people[i].steps > 0) {
+                switch (people[i].direction) {
+                    case 1: {
+                        //up
+                        people[i].y++
+                        break;
+                    }
+                    case 2: {
+                        //down
+                        people[i].y--
+                        break;
+                    }
+                    case 3: {
+                        //left
+                        people[i].x--
+                        break;
+                    }
+                    case 4: {
+                        //right
+                        people[i].x++
+                        break;
+                    }
+                    case 5: {
+                        //up left
+                        people[i].x--
+                        people[i].y++
+                        break;
+                    }
+                    case 6: {
+                        //up right
+                        people[i].x++
+                        people[i].y++
+                        break;
+                    }
+                    case 7: {
+                        //down left
+                        people[i].x--
+                        people[i].y--
+                        break;
+                    }
+                    case 8: {
+                        //down right
+                        people[i].x++
+                        people[i].y--
+                        break;
+                    }
+                }
+                people[i].steps--
+            } else {
+                people[i].steps = parseInt(Math.random() * 100 + 20)
+                people[i].direction = parseInt(Math.random() * 8 + 1)
+            }
+            if (people[i].x < 0 || people[i].x > world.sizeX ||
+                people[i].y < 0 || people[i].x > world.sizeY) {
+                people.splice(i, 1)
+                i--
+            }
+        }
+    }
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>
+
+</html>
