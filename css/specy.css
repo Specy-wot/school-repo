@@ -431,6 +431,7 @@ html {
 }
 .container-title{
     background-color: #d8d8d8;
+    position: absolute;
     color: rgb(93 93 93);
     padding: 0.7rem 0.4rem;
     font-size: 0.9rem;

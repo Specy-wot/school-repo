@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Esercizio TPSIT sulle stringhe javascript">
+    <meta name="author" content="Specy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f54242">
+    <title>Esercizio stringhe</title>
+    <link rel="stylesheet" href="/css/specy.css">
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+</head>
+
+<body class="dm-L1">
+    <div class="navbar dm-L2 space-between">
+        <a href="/index.html">
+          <input type="button" class="button green" value="Progetti">
+        </a>
+        <a href="https://github.com/Specy-wot/school-repo" class="no-highlight">
+            <img src="/images/github.png" class="invert" style="height: 40px; margin-right: 1rem;">
+        </a>
+
+      </div>
+    <div class="title text-white margin-bottom-6 margin-top-4">
+        Esercizio stringhe
+    </div>
+    <div class="container div-60 dm-L2 min-y-6 padding-1">
+        <div class="row margin-1">
+            <input type="text" placeholder="Scrivi testo" id="text" class="input fillX">
+            <button onclick="replaceText()" class="button margin-05 green"
+                style="border-radius: 0.2rem;">Esegui</button>
+        </div>
+        <div class="container min-y-4 container-border row margin-top-2" style="position: relative; border-width: 1px; ">
+            <div class="container-title" style="left: 1rem;">Risultato</div>
+            <div class="container-title" style="right: 1rem;">Lunghezza</div>
+            <input type="text" class="fillX input text-white" id="textResult" disabled>
+            <input type="text" class="input text-white" id="textLength" style="width: 10%; text-align: center;"
+                disabled>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    //l'input "textResult"
+    let textResult = document.getElementById("textResult")
+
+    function replaceText() {
+        textResult.classList.remove("red") //rimuove il rosso
+        let text = document.getElementById("text").value //prende il testo dall'input
+        let chars = text.split("") //divide la stringa in un array di caratteri
+        document.getElementById("textLength").value = chars.length //cambia il valore dell'input textLength alla lunghezza del testo
+        if (chars.length < 2) { //se il testo è più corto di due caratteri non potrà cambiare il penultimo
+            textResult.classList.add("red")
+            textResult.value = "La stringa è troppo corta!"
+            return
+        }
+        chars[1] = "H" //cambia il secondo carattere in H 
+        chars[chars.length - 2] = "J" //cambia il penultimo carattere in J
+        textResult.value = chars.join("") //unisce l'array di caratteri e lo rende una stringa e cambia il valore dell'input textResult
+    }
+</script>
+
+</html>
