@@ -19,10 +19,18 @@
     <div class="rotate dm-L1">
         Rotate the phone!
     </div>
-    <div class="menu dm-L2 padding-05 column" style="left: 0; ">
-        <button class="button green" onclick="window.location='/'" style="padding: 0.5rem 0">
+    <div class="menu dm-L2 padding-05 column centerY" style="left: 0; ">
+        <button class="button green" onclick="window.location='/'" style="padding: 0.5rem 0; width: 100%;">
             Projects
         </button>
+        <div class="text-white margin-top-2">
+            Size:
+        </div>
+        <div style="display: flex;">
+            <input type="number" id="worldSize" value="1000" class="input" style="width: 60%;">
+            <button class="input" style="width: 30%;" onclick="changeSettings()">💾</button>
+        </div>
+
     </div>
     <div class="menu dm-L2 padding-05 column">
         <button class="button green" onclick="game()" id="play">
@@ -49,6 +57,13 @@
 
 
 <script>
+    function changeSettings() {
+        let worldSize = parseInt(document.getElementById("worldSize").value)
+        world.sizeX = worldSize
+        world.sizeY = worldSize
+        dead = true
+        setTimeout(function(){ game()},100)
+    }
     let jSize = window.getComputedStyle(document.getElementById("joy1")).getPropertyValue("width").replace("px", "")
     let joyStick = new JoyStick("joy1", {
         width: jSize,
@@ -87,6 +102,10 @@
             this.y = world.sizeY / 2
             this.size = 5
             this.outline = 5
+            this.powerUp = "none"
+            this.color = "red"
+            this.powerUpTimeout = 500
+            this.speed = 3
         }
     }
     let player = new Player()
@@ -94,25 +113,25 @@
         up: {
             isPressed: false,
             trigger: () => {
-                if (player.y < world.sizeY) player.y += 3
+                if (player.y < world.sizeY) player.y += player.speed
             }
         },
         down: {
             isPressed: false,
             trigger: () => {
-                if (player.y > 0) player.y -= 3
+                if (player.y > 0) player.y -= player.speed
             }
         },
         left: {
             isPressed: false,
             trigger: () => {
-                if (player.x > 0) player.x -= 3
+                if (player.x > 0) player.x -= player.speed
             }
         },
         right: {
             isPressed: false,
             trigger: () => {
-                if (player.x < world.sizeX) player.x += 3
+                if (player.x < world.sizeX) player.x += player.speed
             }
         }
     }
@@ -134,12 +153,36 @@
             this.steps = parseInt(Math.random() * 200 + 50)
             this.infectRadius = 0
             this.color = getRandomColor()
-            this.size = parseInt(Math.random() * (world.sizeX / 30) + 10)
-            this.infectRadius = parseInt(Math.random() * (world.sizeX / 400) + this.size)
+            this.size = parseInt(Math.random() * 50 + 10)
+            this.infectRadius = 0
+
         }
     }
+    class SpawnPoint {
+        constructor() {
+            this.x = parseInt(Math.random() * world.sizeX)
+            this.y = parseInt(Math.random() * world.sizeY)
+            this.size = 50
+            this.type = "🏢"
+        }
+    }
+    class PowerUp {
+        constructor(type, color) {
+            this.x = parseInt(Math.random() * world.sizeX)
+            this.y = parseInt(Math.random() * world.sizeY)
+            this.type = type
+            this.size = 30
+            this.timeout = Math.floor(Math.random() * 300 + 100)
+            this.color = color
+        }
+    }
+    let powerupTypes = [{
+        type: "💊",
+        color: "green"
+    }]
     let people = []
-
+    let spawnPoints = []
+    let powerUps = []
 
     function handleFrame() {
         if (dead) return
@@ -148,21 +191,39 @@
         eraseCanvas()
         calculatePeople()
         handlePlayerPosition()
-        drawCircle(player.x, player.y, player.size, "red")
-        drawOutline(player.x, player.y, player.outline)
+        handleSpawnPoints()
+        calculatePowerUp()
+        drawCircle(player.x, player.y, player.size, player.color)
+        drawOutline(player.x, player.y, player.outline, player.color)
         window.requestAnimationFrame(handleFrame)
+    }
+
+    function handleSpawnPoints() {
+        for (let i = 0; i < spawnPoints.length; i++) {
+            let sp = spawnPoints[i]
+            drawText(sp.x, sp.y,sp.type, sp.size)
+        }
     }
 
     let dead = false
 
     function game() {
         document.getElementById("play").disabled = true
+        canvas.height = world.sizeY
+        canvas.width = world.sizeX
         dead = false
         score = 0
         document.getElementById("canvas").style.backgroundColor = ""
         people = []
+        spawnPoints = []
+        powerUps = []
         player = new Player()
         let peopleCount = parseInt(Math.random() * 20 + 20)
+        let spawnCount = parseInt(Math.random() * world.sizeX / 300)
+
+        for (let i = 0; i < spawnCount; i++) {
+            spawnPoints.push(new SpawnPoint())
+        }
         for (let i = 0; i < peopleCount; i++) {
             people.push(new Person())
         }
@@ -226,10 +287,23 @@
         ctx.fill()
     }
 
-    function drawOutline(x, y, size) {
-        ctx.strokeStyle = "red"
-        ctx.lineWidth = 3
+    function drawText(x,y,text,size){
         ctx.beginPath()
+        ctx.font = size+'px serif'
+        ctx.textAlign = "center"; 
+        ctx.textBaseline = "middle"; 
+        ctx.fillText(text,x, world.sizeY - y)
+    }
+    function drawSquare(x, y, size, color) {
+        ctx.fillStyle = color
+        ctx.beginPath()
+        ctx.fillRect(x, world.sizeY - y, size, size)
+    }
+
+    function drawOutline(x, y, size, color) {
+        ctx.beginPath()
+        ctx.strokeStyle = color
+        ctx.lineWidth = 3
         ctx.arc(x, world.sizeY - y, size, 0, 2 * Math.PI)
         ctx.stroke()
     }
@@ -283,9 +357,17 @@
     }, 500)
 
     function generateNewPlayer() {
-        let numOfPeople = score / 3 / 100
+        let numOfPeople = score / 3 / 200
         for (let i = 0; i < numOfPeople; i++) {
-            people.push(new Person())
+            let person = new Person()
+            if (Math.random() > 0.5) {
+                if (spawnPoints.length != 0) {
+                    let spawnPoint = spawnPoints[Math.floor(Math.random() * (spawnPoints.length - 1))]
+                    person.x = spawnPoint.x
+                    person.y = spawnPoint.y
+                }
+            }
+            people.push(person)
         }
         let randomTime = Math.random() * 4000 + 2000
         setTimeout(function () {
@@ -294,34 +376,89 @@
     }
     generateNewPlayer()
 
-    function calculatePeople() {
-        for (let i = 0; i < people.length; i++) {
+    function generatePowerUP() {
+        let powerUp = powerupTypes[Math.floor(Math.random() * (powerupTypes.length - 1))]
+        powerUp = new PowerUp(powerUp.type, powerUp.color)
+        let randomTime = Math.random() * 8000 + 6000
+        powerUps.push(powerUp)
+        setTimeout(function () {
+            generatePowerUP()
+        }, randomTime)
+    }
+    generatePowerUP()
 
-            if (people[i].infected) {
-                let dx = people[i].x - player.x
-                let dy = people[i].y - player.y
-                var collision = Math.sqrt(dx * dx + dy * dy);
-                if (collision < people[i].size + player.outline) {
-                    dead = true
-                    document.getElementById("play").disabled = false
-                    document.getElementById("canvas").style.backgroundColor = "rgb(96 25 25)"
-                    if (score > highscore) {
-                        highscore = score
-                        localStorage.setItem("highscore", parseInt(highscore / 3))
-                        document.getElementById("highscore").innerHTML = parseInt(highscore / 3)
+    function calculatePowerUp() {
+        if (player.powerUp != "none") {
+            player.powerUpTimeout--
+            if (player.powerUpTimeout < 0) {
+                player.powerUp = "none"
+                player.color = "red"
+                player.speed = 3
+            }
+        }
+        for (let i = 0; i < powerUps.length; i++) {
+            drawText(powerUps[i].x, powerUps[i].y,powerUps[i].type, powerUps[i].size)
+            let dx = powerUps[i].x - player.x
+            let dy = powerUps[i].y - player.y
+            var collision = Math.sqrt(dx * dx + dy * dy);
+            if (collision < powerUps[i].size + player.outline) {
+                switch (powerUps[i].type) {
+                    case "💊": {
+                        player.color = powerUps[i].color
+                        player.speed = 6
+                        player.powerUpTimeout = 500
+                        break
                     }
                 }
+                player.powerUp = powerUps[i].type
+                powerUps.splice(i, 1)
+                i--
+            } else {
+                powerUps[i].timeout--
+                if (powerUps[i].timeout < 0) {
+                    powerUps.splice(i, 1)
+                    i--
+                }
+            }
+
+
+        }
+
+    }
+
+    function calculatePeople() {
+        for (let i = 0; i < people.length; i++) {
+            if (people[i].infected) {
                 for (let j = 0; j < people.length; j++) {
                     let dx = people[i].x - people[j].x
                     let dy = people[i].y - people[j].y
                     var collision = Math.sqrt(dx * dx + dy * dy);
                     if (collision < people[i].size + people[j].size) people[j].infected = true
                 }
+                let dx = people[i].x - player.x
+                let dy = people[i].y - player.y
+                var collision = Math.sqrt(dx * dx + dy * dy);
+                if (collision < people[i].size + player.outline) {
+                    if (player.powerUp == "💊") {
+                        people[i].infected = false
+                    } else {
+                        dead = true
+                        document.getElementById("play").disabled = false
+                        document.getElementById("canvas").style.backgroundColor = "rgb(96 25 25)"
+                        if (score > highscore) {
+                            highscore = score
+                            localStorage.setItem("highscore", parseInt(highscore / 3))
+                            document.getElementById("highscore").innerHTML = parseInt(highscore / 3)
+                        }
+                    }
+
+                }
+
             }
             let color = people[i].infected ? people[i].color : "gray"
             drawCircle(people[i].x, people[i].y, people[i].size, color)
             if (people[i].steps > 0) {
-                let speed = (world.sizeX / 30 - 10) / people[i].size
+                let speed = parseInt(Math.random() * 50 + 10) / people[i].size
                 switch (people[i].direction) {
                     case 1: {
                         //up
