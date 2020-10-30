@@ -1,0 +1,15 @@
+{
+  "short_name": "React App",
+  "name": "Website to store and learn words in different languages",
+  "icons": [
+    {
+      "src": "/images/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "fullscreen",
+  "theme_color": "#187b69",
+  "background_color": "#187b69"
+}
