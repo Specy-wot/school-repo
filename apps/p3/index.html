@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Esercizio su giochi per bambini">
+    <meta name="author" content="Specy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="Scegli colore tema">
+    <title>Esercizio TPSIT</title>
+    <link rel="stylesheet" href="/css/specy.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+</head>
+
+
+<body>
+    <div class="mainMenu">
+        <div class="introduction">
+            <div class="title text-center">
+                Benvenuto
+                <div id="studentName">Studente</div>
+            </div>
+            <div class="text-center" id="mainDescription">
+                Registrati per poter accedere a 8 giochi sulle parole e numeri!
+            </div>
+        </div>
+        <div class="registration">
+            <form class="registration-form" onsubmit="return handleSubmit(this)">
+                <div class="start-playing">Inizia a giocare!</div>
+                <div class="row space-between centerY">
+                    <div>Nome</div>
+                    <input type="text" placeholder="Scrivi il nome" class="input" required>
+                </div>
+                <div class="row space-between centerY">
+                    <div>Classe</div>
+                    <input type="text" placeholder="Scrivi la classe" class="input" required>
+                </div>
+                <div class="row space-between centerY">
+                    <div>Età</div>
+                    <input type="number" placeholder="Scrivi l'età" class="input" required>
+                </div>
+                <input type="submit" class="button darkTeal" value="Registrati!" style="margin-top: 1rem;">
+            </form>
+        </div>
+    </div>
+    <div style="height:15vh; width: 100vw; margin-top: -2px;">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+            <path d="M0.00,49.99 C181.37,-39.18 275.05,139.44 500.00,49.99 L500.00,0.00 L0.00,0.00 Z"
+                style="stroke: none; fill: #6290C3;"></path>
+        </svg>
+    </div>
+    <div id="gameSelector">
+        <a class="game" href="./words/index.html">
+            Parole
+        </a>
+        <a class="game" href="./numbers/index.html">
+            Numeri
+        </a>
+    </div>
+</body>
+
+
+<script src="index.js"></script>
+
+</html>

@@ -1,0 +1,134 @@
+.mainMenu{
+    width: 100%;
+    background-color: #6290C3;
+    color:white;
+    display: flex;
+}
+body{
+    background-color: #E0F5EC;
+    overflow-x: hidden;
+}
+.introduction{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    font-size: 1.5rem;
+    flex: 1;
+}
+.registration{
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40vw;
+    height: 60vh;
+    transition: all 1s;
+}
+.hiddenRegistration{
+    padding: 0 !important;
+    overflow: hidden;
+    width: 0 !important;
+    height: 0 !important;
+}
+.registration-form{
+    width: 100%;
+    padding:2rem;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    box-sizing: border-box;
+    border-radius: 0.8rem;
+    height: 100%;
+    background-color: #292B66;
+    min-height: 60vh;
+
+}
+#gameSelector{
+    background-color: #6290C3;
+    width: 50vw;
+    height: 30vh;
+    margin-top: auto;
+    display: none;
+    flex-direction: row;
+    border-radius: 1rem;
+    margin-bottom: 2vw;
+}
+
+.game {
+    flex: 1 1 auto;
+    background-color: #C2E7DA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: #292B66;
+    border-radius: 1rem;
+    margin: 1rem;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+.game:hover{
+    background-color: #BAFF29;
+}
+#studentName{
+    color:#BAFF29;
+}
+.input{
+    margin-right: 0;
+    transition:all 0.5s;
+}
+.input:hover {
+    filter: brightness(0.8);
+}
+.input:focus {
+    background-color: #BAFF29;
+    filter: brightness(1);
+}
+.start-playing{
+    width: 100%;
+    font-size: 2.5rem;
+    text-align: center;
+    flex: 1;
+}
+.title{
+    display: flex;
+    font-size: 4rem;
+    justify-content: center;
+}
+#studentName{
+    margin-left: 1rem;
+}
+@media screen and (orientation:portrait){
+    #studentName {
+        margin-left: 0;
+    }
+    .registration-form{
+        min-height: unset;
+    }
+    #gameSelector{
+        flex-direction: column;
+        width: 90vw;
+        height: 50vh;
+        margin-bottom: 5vw;
+    }
+    .game{
+        margin: 1.5rem;
+    }
+    .title{
+        flex-direction: column;
+    }
+    .introduction{
+        padding: 0.5rem;
+    }
+    .registration{
+        padding: 0.5rem;
+        box-sizing: border-box;
+        width: 100vw;
+        height: 45vh;
+        margin-top: 3rem;
+    }
+    .mainMenu{
+        flex-direction: column;
+    }
+}

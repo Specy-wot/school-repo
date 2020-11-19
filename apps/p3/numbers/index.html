@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Esercizio su giochi per bambini">
+    <meta name="author" content="Specy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="Scegli colore tema">
+    <title>Esercizio TPSIT</title>
+    <link rel="stylesheet" href="/css/specy.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+</head>
+
+
+<body>
+    <div class="navbar">
+        <div class="goBackWrapper">
+            <a href="../index.html" class="fillX">
+                <button class="button darkTeal fillX">Torna indietro</button>
+            </a>
+        </div>
+
+        <div id="studentName" onclick="askLogOut()">
+
+        </div>
+    </div>
+    <div class="gamesWrapper">
+        <div class="gamePicker">
+            <input type="button" class="button gameBtn btnToggled" value="Gioco 1" gameNum=1 onclick="selectGame(this)">
+            <input type="button" class="button gameBtn" value="Gioco 2" gameNum=2 onclick="selectGame(this)">
+            <input type="button" class="button gameBtn" value="Gioco 3" gameNum=3 onclick="selectGame(this)">
+        </div>
+        <div class="gamesHolder">
+
+
+
+            <div class="game" style="display: flex;">
+                <div class="title">Indovina il numero</div>
+                <div class="container">
+                    <div class="row">
+                        <input type="number" class="input fillX" placeholder="Scrivi il numero" id="guess">
+                        <input type="button" class="button green" value="Indovina" onclick="checkGuess(this)"
+                            id="guessBtn">
+                    </div>
+                    <div class="row">
+                        <input type="text" class="input" id="guessResult" disabled>
+                    </div>
+                </div>
+                <div class="textContainer">
+                    <div>
+                        Devi indovinare il numero! Scrivi un numero e controlla se è corretto o no, il gioco ti dirà
+                        se il tuo numero è maggiore o minore di quello che devi indovinare
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="game">
+                <div class="title">Tabellina di un numero</div>
+                <div class="container">
+                    <div id="multiplesDiv">
+                        <div contenteditable="true"></div>
+                        <div contenteditable="true"></div>
+                        <div contenteditable="true"></div>
+                        <div contenteditable="true"></div>
+                        <div contenteditable="true"></div>
+                        <div contenteditable="true"></div>
+                        <div contenteditable="true"></div>
+                        <div contenteditable="true"></div>
+                        <div contenteditable="true"></div>
+                        <div contenteditable="true"></div>
+                    </div>
+                    <div class="row">
+                        <input type="button" class="button green fillX" value="Controlla" onclick="checkMultiples()">
+                    </div>
+                    <div class="row">
+                        <input type="button" class="button darkTeal fillX" value="Resetta" onclick="resetMultiples()">
+                    </div>
+                </div>
+                <div class="textContainer">
+                    <div>
+                        Scrivi la tabellina per il numero scritto in alto, una volta finito clicca "Controlla" e vedi quanti errori
+                        hai fatto
+                    </div>
+                </div>
+            </div>
+
+            <div class="game">
+                <div class="title">Gioco sulle operazioni</div>
+                <div class="container">
+                    <canvas id="canvasOperations">
+
+                    </canvas>
+                    <div class="row">
+                        <input type="number" class="fillX input" id="operationsResult">
+                        <input type="button" class="button green" value="Controlla" onclick="checkOperation(this)">
+                        <input type="button" class="button red resetBtn" value="Resetta" onclick="resetOperationGame()">
+                    </div>
+                </div>
+                <div class="textContainer">
+                    <div>
+                        Scrivi il risultato dell'operazione prima che raggiunga la linea rossa! <br>
+                        Il gioco va più veloce man mano che dai risposte corrette
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+
+<script src="index.js"></script>
+
+</html>

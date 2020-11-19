@@ -1,0 +1,150 @@
+.navbar{
+    background-color: #292B66;
+    height: 3.5rem;
+}
+*{
+    outline: none;
+    text-decoration: none;
+}
+body{
+    background-color: #E0F5EC;
+}
+#studentName{
+    color: white;
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    margin-left: auto;
+}
+.gamesWrapper{
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+.input{
+    margin: 0.2rem;
+}
+#guessResult{
+    flex: 1;
+    border-radius: 0.2rem;
+    border: none;
+    background-color: white;
+}
+.game{
+    height: calc(100vh - 3.5rem);
+    width: 100%;
+    display: none;
+    overflow-y: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+.goBackWrapper{
+    width: calc(15vw - 1rem);
+
+}
+.gameBtn{
+    width: 100%;
+    background-color: #97B5D8;
+    color: white;
+    transition: all 0.5s;
+}
+.gameBtn:hover{
+    background-color: #abdb44;
+}
+.btnToggled {
+    background-color: #BAFF29;
+    color: black;
+}
+.textContainer{
+    width: 60%;
+    font-size: 1rem;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.textContainer{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+#canvasOperations{
+    width: 50vw;
+    height: 50vh;
+    border:4px dashed #292B66;
+    border-radius: 0.5rem;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.gamePicker{
+    width: 15vw;
+    overflow-y: auto;
+    background-color: #6290C3;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+.gamesHolder{
+    flex: 1;
+    display: flex;
+}
+#multiplesDiv{
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border: solid 2px #292B66;
+}
+#multiplesDiv div{
+    width: 100%;
+    text-align: center;
+    border-radius: 0.5rem;
+    margin-bottom: 0.2rem;
+    background-color: #97B5D8;
+}
+
+@media screen and (orientation:portrait){
+    #canvasOperations {
+        width: 80vw;
+        height: 50vh;
+
+    }
+    .textContainer{
+        width: 80%;
+    }
+    .gamePicker{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .game{
+        height: unset;
+        flex:1
+    }
+    .gameBtn{
+        width: unset;
+        min-width: 25vw;
+        flex: 1;
+    }
+    .resetBtn{
+        flex: 1;
+    }
+    .goBackWrapper{
+        width: 50vw;
+    }
+    .gamesWrapper{
+        flex-direction: column;
+    }
+    .navbar{
+        height: unset;
+    }
+    .gamePicker{
+        width: 100vw;
+    }
+}

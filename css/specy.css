@@ -150,6 +150,9 @@ html {
 
 
 /*--------------------Text--------------------*/
+.text-center{
+    text-align: center;
+}
 .small-text {
     font-size: 0.7rem;
     line-height: 1.2rem;
@@ -181,6 +184,7 @@ html {
 
 
 /*--------------------Margin and padding--------------------*/
+
 .margin-1 {
     margin: 1rem !important;
 }
@@ -232,6 +236,9 @@ html {
     padding: 0.5rem !important;
 }
 
+.margin-0{
+    margin: 0 !important;
+}
 
 
 

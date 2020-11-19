@@ -1,0 +1,59 @@
+.navbar{
+    background-color: #292B66;
+    height: 3.5rem;
+}
+*{
+    outline: none;
+    text-decoration: none;
+}
+body{
+    background-color: #E0F5EC;
+}
+#studentName{
+    color: white;
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    margin-left: auto;
+}
+.gamesWrapper{
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+.game{
+    height: calc(100vh - 3.5rem);
+    display: none;
+    overflow-y: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+.goBackWrapper{
+    width: calc(15vw - 1rem);
+
+}
+.gameBtn{
+    width: 100%;
+    background-color: #97B5D8;
+    color: white;
+    transition: all 0.5s;
+}
+.btnToggled {
+    background-color: #BAFF29;
+    color: black;
+}
+.gamePicker{
+    width: 15vw;
+    
+    background-color: #6290C3;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+.gamesHolder{
+    flex: 1;
+}
