@@ -9,11 +9,18 @@
 body{
     background-color: #E0F5EC;
 }
-#studentName{
-    color: white;
-    font-size: 1.3rem;
-    margin-right: 0.5rem;
-    margin-left: auto;
+#studentName {
+	color: white;
+	font-size: 1.3rem;
+	margin-right: 0.5rem;
+	margin-left: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #474a67;
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
 }
 .gamesWrapper{
     width: 100%;
@@ -29,6 +36,7 @@ body{
     border-radius: 0.2rem;
     border: none;
     background-color: white;
+    transition: all 0.2s
 }
 .game{
     height: calc(100vh - 3.5rem);
@@ -41,13 +49,14 @@ body{
     box-sizing: border-box;
 }
 .goBackWrapper{
-    width: calc(15vw - 1rem);
+    width: unset;
 
 }
 .gameBtn{
     width: 100%;
     background-color: #97B5D8;
     color: white;
+    white-space: normal;
     transition: all 0.5s;
 }
 .gameBtn:hover{
@@ -71,9 +80,10 @@ body{
 }
 #canvasOperations{
     width: 50vw;
-    height: 50vh;
-    border:4px dashed #292B66;
+    height: 60vh;
     border-radius: 0.5rem;
+    background-color: #2d304e;
+    margin: 0.2rem;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -113,7 +123,7 @@ input::-webkit-inner-spin-button {
 @media screen and (orientation:portrait){
     #canvasOperations {
         width: 80vw;
-        height: 50vh;
+        height: 40vh;
 
     }
     .textContainer{
@@ -136,7 +146,7 @@ input::-webkit-inner-spin-button {
         flex: 1;
     }
     .goBackWrapper{
-        width: 50vw;
+        width: unset;
     }
     .gamesWrapper{
         flex-direction: column;

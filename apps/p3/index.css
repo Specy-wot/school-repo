@@ -92,7 +92,6 @@ body{
     flex: 1;
 }
 .title{
-    display: flex;
     font-size: 4rem;
     justify-content: center;
 }

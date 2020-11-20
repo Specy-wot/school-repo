@@ -1,59 +1,259 @@
-.navbar{
-    background-color: #292B66;
-    height: 3.5rem;
+.navbar {
+	background-color: #292b66;
+	height: 3.5rem;
 }
-*{
-    outline: none;
-    text-decoration: none;
+* {
+	outline: none;
+	text-decoration: none;
+	user-select: none;
 }
-body{
-    background-color: #E0F5EC;
+body {
+	background-color: #e0f5ec;
 }
-#studentName{
-    color: white;
-    font-size: 1.3rem;
-    margin-right: 0.5rem;
-    margin-left: auto;
+#studentName {
+	color: white;
+	font-size: 1.3rem;
+	margin-right: 0.5rem;
+	margin-left: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #474a67;
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
 }
-.gamesWrapper{
-    width: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: row;
+.gamesWrapper {
+	width: 100%;
+	flex: 1;
+	display: flex;
+	flex-direction: row;
 }
-.game{
-    height: calc(100vh - 3.5rem);
-    display: none;
-    overflow-y: auto;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    box-sizing: border-box;
+.input {
+	margin: 0.2rem;
 }
-.goBackWrapper{
-    width: calc(15vw - 1rem);
-
+#guessResult {
+	flex: 1;
+	border-radius: 0.2rem;
+	border: none;
+	background-color: white;
 }
-.gameBtn{
-    width: 100%;
-    background-color: #97B5D8;
-    color: white;
-    transition: all 0.5s;
+.wordToFind{
+	border-radius: 0.3rem;
+	margin: 0.2rem;
+	padding: 0.2rem 0.5rem;
+	background-color: #2d304e;
+	color: white; 
+	cursor: pointer;
+}
+.crossWordsContainer{
+	flex-direction: row;
+	display: flex;
+}
+#crossWordsToFind{
+	display: flex;
+	max-height: calc((1.5rem+1px)*15);
+	overflow-y: scroll;
+	margin-left: 1rem;
+	flex-direction: column;
+}
+.game {
+	height: calc(100vh - 3.5rem);
+	width: 100%;
+	display: none;
+	overflow-y: auto;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+	padding-top: 4rem;
+	box-sizing: border-box;
+}
+.goBackWrapper {
+	width: unset
+}
+.gameBtn {
+	width: 100%;
+	background-color: #97b5d8;
+	color: white;
+	white-space: normal;
+	transition: all 0.5s;
+}
+.gameBtn:hover {
+	background-color: #abdb44;
 }
 .btnToggled {
-    background-color: #BAFF29;
-    color: black;
+	background-color: #baff29;
+	color: black;
 }
-.gamePicker{
-    width: 15vw;
-    
-    background-color: #6290C3;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    box-sizing: border-box;
-    padding: 1rem;
+.textContainer {
+	width: 60%;
+	font-size: 1rem;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
 }
-.gamesHolder{
-    flex: 1;
+.textContainer {
+	text-align: center;
+	margin-bottom: 1rem;
+}
+#canvasOperations {
+	width: 50vw;
+	height: 60vh;
+	border-radius: 0.5rem;
+	background-color: #2d304e;
+	margin: 0.2rem;
+}
+.life {
+	width: 1rem;
+	height: 1rem;
+	margin: 0.1rem;
+	border-radius: 0.2rem;
+	transition: all 0.2s;
+}
+#hangManKeyboard {
+	width: 45%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 2rem;
+}
+.hangManLetter {
+	width: 2rem;
+	height: 2rem;
+	margin: 0.1rem;
+	border-radius: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #2d304e;
+	color: white;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+.keyboardLetter {
+	width: 2rem;
+	height: 2rem;
+	margin: 0.1rem;
+	border-radius: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #d8d8d8;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+#wordsGameInput {
+	transition: all 0.2s;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.gamePicker {
+	width: 15vw;
+	overflow-y: auto;
+	background-color: #6290c3;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	box-sizing: border-box;
+	padding: 1rem;
+}
+.gamesHolder {
+	flex: 1;
+	display: flex;
+}
+#multiplesDiv {
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	border: solid 2px #292b66;
+}
+.crossLetter{
+	width: 1.5rem;
+	height: 1.5rem;
+	color: white;
+	border-right: 1px #5d5d5d solid;
+	border-bottom: 1px #5d5d5d solid;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.crossRow{
+	flex: 1;
+	display: flex;
+}
+#crossWords{
+	display: flex;
+	width: fit-content;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	height: fit-content;
+	flex-direction: column;
+	background-color: #2d304e;
+}
+#multiplesDiv div {
+	width: 100%;
+	text-align: center;
+	border-radius: 0.5rem;
+	margin-bottom: 0.2rem;
+	background-color: #97b5d8;
+}
+
+@media screen and (orientation: portrait) {
+	.crossWordsContainer{
+		flex-direction: column;
+	}
+	#crossWordsToFind{
+		flex-direction: row;
+		margin-top: 1rem;
+		flex-wrap: wrap;
+	}
+	#hangManKeyboard {
+		width: 90%;
+	}
+	#canvasOperations {
+		width: 80vw;
+		height: 40vh;
+	}
+	.textContainer {
+		width: 80%;
+	}
+	.gamePicker {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	.game {
+		height: unset;
+		flex: 1;
+		padding-top: 2rem;
+	}
+	.gameBtn {
+		flex: 1;
+		    white-space: nowrap;
+	}
+	.resetBtn {
+		flex: 1;
+	}
+	.goBackWrapper {
+		width: unset;
+	}
+	.gamesWrapper {
+		flex-direction: column;
+	}
+	.navbar {
+		height: unset;
+	}
+	.gamePicker {
+		width: 100vw;
+	}
 }

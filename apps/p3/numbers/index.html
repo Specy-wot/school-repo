@@ -28,16 +28,15 @@
     </div>
     <div class="gamesWrapper">
         <div class="gamePicker">
-            <input type="button" class="button gameBtn btnToggled" value="Gioco 1" gameNum=1 onclick="selectGame(this)">
-            <input type="button" class="button gameBtn" value="Gioco 2" gameNum=2 onclick="selectGame(this)">
-            <input type="button" class="button gameBtn" value="Gioco 3" gameNum=3 onclick="selectGame(this)">
+            <input type="button" class="button gameBtn btnToggled" value="Indovina il numero" gameNum=1 onclick="selectGame(this)">
+            <input type="button" class="button gameBtn" value="Tabelline" gameNum=2 onclick="selectGame(this)">
+            <input type="button" class="button gameBtn" value="Operazioni" gameNum=3 onclick="selectGame(this)">
         </div>
         <div class="gamesHolder">
 
 
 
             <div class="game" style="display: flex;">
-                <div class="title">Indovina il numero</div>
                 <div class="container">
                     <div class="row">
                         <input type="number" class="input fillX" placeholder="Scrivi il numero" id="guess">
@@ -59,7 +58,6 @@
 
 
             <div class="game">
-                <div class="title">Tabellina di un numero</div>
                 <div class="container">
                     <div id="multiplesDiv">
                         <div contenteditable="true"></div>
@@ -89,7 +87,6 @@
             </div>
 
             <div class="game">
-                <div class="title">Gioco sulle operazioni</div>
                 <div class="container">
                     <canvas id="canvasOperations">
 

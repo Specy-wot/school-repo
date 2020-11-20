@@ -1,3 +1,7 @@
+addEventListener("load", function () {
+    var viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute("content", viewport.content + ", height=" + window.innerHeight);
+})
 let storedData = localStorage.getItem("storedData")
 if (storedData === null) {
     storedData = {
@@ -46,7 +50,11 @@ function checkGuess(guessBtn) {
         guessBtn.value = "Riprova"
         return
     }
-    guessResult.value = guess < numToGuess ? "Più alto!" : "Più basso!"
+    document.getElementById("guess").value = ""
+    guessResult.value = (guess < numToGuess ? "Più alto di ": "Più basso di ") + guess +"!"
+    setTimeout(function(){
+        guessResult.classList.remove("red")
+    },1000)
 }
 function resetGuess() {
     let guessBtn = document.getElementById("guessBtn")
@@ -93,14 +101,14 @@ function randomNum(limit) { return Math.floor(Math.random() * limit) }
 let opCanvas = document.getElementById("canvasOperations")
 let opCtx = opCanvas.getContext("2d")
 class Operation {
-    result = 0
-    textOperation = ""
-    operators = "-+/*"
-    subMinLimit = 25
-    mulDivLimit = 10
-    x = 0
-    y = 50
     constructor(harder, x) {
+        this.result = 0
+        this.textOperation = ""
+        this.operators = "-+/*"
+        this.subMinLimit = 25
+        this.mulDivLimit = 10
+        this.x = 0
+        this.y = 20
         let ranOperator = this.operators[randomNum(this.operators.length)]
         let nums = []
 
@@ -124,12 +132,12 @@ class Operation {
     }
 }
 class Game {
-    width = 500
-    height = 300
-    elements = []
-    speed = 0.2
-    score = 0
     constructor(canvasName) {
+        this.width = 500
+        this.height = 300
+        this.elements = []
+        this.speed = 0.2
+        this.score = 0
         let canvas = document.getElementById(canvasName)
         let sizes = canvas.getBoundingClientRect()
         this.width = parseInt(sizes.width)
@@ -150,7 +158,7 @@ function renderCanvas() {
     opCtx.clearRect(0, 0, game.width, game.height)
     game.elements.forEach(e => {
         opCtx.font = "20px Arial"
-        opCtx.fillStyle = "darkteal"
+        opCtx.fillStyle = "white"
         opCtx.fillText(e.textOperation, e.x, e.y)
         e.y += game.speed
         if (e.y > game.height - 20) {
@@ -189,11 +197,12 @@ document.getElementById("operationsResult").addEventListener("keydown", function
         checkOperation()
     }
 })
+
 function checkOperation() {
     let el = document.getElementById("operationsResult")
     let result = el.value
     if (result == game.elements[0].result) {
-        game.speed += game.speed / 8
+        game.speed += 0.01
         game.score += 2
         game.elements.splice(0, 1)
         el.classList.add("green")

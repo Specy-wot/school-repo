@@ -1,3 +1,7 @@
+addEventListener("load", function () {
+    var viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute("content", viewport.content + ", height=" + window.innerHeight);
+})
 function handleSubmit(e){
     let inputs = e.querySelectorAll("input")
     let name = inputs[0].value
