@@ -30,8 +30,12 @@ function askLogOut(){
     if(promptAnswer) window.location = "../index.html"
 }
 
+
+
+
 //---------------------------------------------------------------------//
 //Indovina numero
+
 let numToGuess = Math.floor(Math.random() * 1000)
 function checkGuess(guessBtn) {
     if (guessBtn.value === "Riprova") {
@@ -39,7 +43,7 @@ function checkGuess(guessBtn) {
         return
     }
     let guess = parseInt(document.getElementById("guess").value)
-
+    if(isNaN(guess)) return
     let guessResult = document.getElementById("guessResult")
     guessResult.classList.add("red")
     if (guess === numToGuess) {
@@ -65,6 +69,13 @@ function resetGuess() {
     guessResult.classList.remove("red", "green")
     guessBtn.classList.remove("darkTeal")
 }
+
+
+
+
+
+
+
 
 //---------------------------------------------------------------------//
 //Multipli di N
@@ -94,8 +105,20 @@ function resetMultiples() {
 }
 resetMultiples()
 
+
+
+
+
+
+
+
+
+
+
+
+
 //---------------------------------------------------------------------//
-//Falling Operations
+//Operazioni
 
 function randomNum(limit) { return Math.floor(Math.random() * limit) }
 let opCanvas = document.getElementById("canvasOperations")
@@ -104,7 +127,7 @@ class Operation {
     constructor(harder, x) {
         this.result = 0
         this.textOperation = ""
-        this.operators = "-+/*"
+        this.operators = "-+*"
         this.subMinLimit = 25
         this.mulDivLimit = 10
         this.x = 0

@@ -41,7 +41,7 @@ function askLogOut() {
 
 
 //---------------------------------------------------------------------//
-//Hangman
+//Impiccato
 
 
 class HangMan {
@@ -84,6 +84,7 @@ function resetHangman() {
         hangManWord.appendChild(letter)
     })
 }
+
 function checkHangMan(el) {
     if (hangMan.lives === 0) return
     let letters = document.querySelectorAll(".letter_" + el.innerHTML)
@@ -119,7 +120,7 @@ function checkHangMan(el) {
 
 
 //---------------------------------------------------------------------//
-//Find the words
+//Trova le parole
 
 class FindTheWords {
     constructor() {
@@ -252,7 +253,7 @@ function resetFindTheWords() {
 
 
 //---------------------------------------------------------------------//
-//Falling words
+//Impara la tastiera
 
 function randomNum(limit) { return Math.floor(Math.random() * limit) }
 let opCanvas = document.getElementById("canvasOperations")
