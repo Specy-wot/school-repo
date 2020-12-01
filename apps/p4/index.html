@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Esercizio sulla area">
+    <meta name="author" content="Specy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="Scegli colore tema">
+    <title>Esercizio TPSIT</title>
+    <link rel="stylesheet" href="/css/specy.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+    <style>
+        svg {
+            transform: rotate(180deg)
+        }
+
+        body {
+            background-color: black;
+            background-image: url("bg.png");
+            background-repeat: repeat;
+        }
+
+        .input {
+            margin: 0;
+            margin-right: 0.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .polygon {
+            stroke-width: 10px;
+            fill: transparent;
+            stroke: #9a4ef1;
+        }
+
+        .polygonResult {
+            color: white;
+            padding: 2rem;
+            padding-bottom: 0;
+            box-sizing: border-box;
+            font-size: 1.2rem;
+        }
+
+        .polygonData {
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .exercise {
+            padding: 1rem 4rem 1.5rem 4rem;
+            border: 3px solid #4f376b;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        @media screen and (orientation: portrait) {
+            .exercise {
+                width: 90vw;
+                padding: 1.5rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="centerY">
+    <div class="navbar dm-L1">
+        <button class="button" style="background-color: #315682; color:white;" onclick="window.location = '/'">
+            Progetti
+        </button>
+    </div>
+    <div class="container dm-L2 exercise">
+        <div class="container row space-between" style="background-color: #4f376b;">
+            <div class="column fillX">
+                <input type="number" class="input wm-L2" placeholder="Numero di lati" style="margin-bottom: 0.5rem;"
+                    id="numOfSides">
+                <input type="number" class="input wm-L2" placeholder="Lunghezza lato" id="sizeOfSides">
+            </div>
+            <input type="button" class="darkTeal button margin-0" value="Calcola" onclick="generate()">
+        </div>
+        <div class="column centerX centerY">
+            <svg id="polygon">
+
+            </svg>
+            <div class="polygonData" id="polygonSide">
+            </div>
+        </div>
+        <div class="polygonResult">
+            <div class="row space-between" style="margin-bottom: 0.5rem;">
+                <div>
+                    Area:
+                </div>
+                <div id="area">
+
+                </div>
+            </div>
+            <div class="row space-between">
+                <div>
+                    Perimetro:
+                </div>
+                <div id="perimeter">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+
+    function generate() {
+        let numOfSides = parseFloat(document.getElementById("numOfSides").value)
+        let sizeOfSides = parseFloat(document.getElementById("sizeOfSides").value)
+        if (isNaN(numOfSides) || isNaN(sizeOfSides)) return alert("Inserisci solo numeri!")
+        generatePolygon(numOfSides, sizeOfSides, 250)
+    }
+
+    function generatePolygon(numOfSides, size, svgSize) {
+        document.getElementById("polygonSide").innerHTML = size
+        document.getElementById("polygon").innerHTML = ""
+        let vertices = []
+        let pos = svgSize / 2
+
+        for (var i = 0; i < numOfSides; i++) {
+            let x = Math.floor(pos + 100 * Math.sin(2 * Math.PI * i / numOfSides))
+            let y = Math.floor(pos + 100 * Math.cos(2 * Math.PI * i / numOfSides))
+            vertices.push(x + "," + y)
+        }
+        let svg = document.getElementById("polygon")
+        svg.style.width = svgSize + "px"
+        svg.style.height = svgSize + "px"
+        document.getElementById("area").innerHTML = +((Math.pow(size, 2) * numOfSides) / (4 * Math.tan(Math.PI / numOfSides))).toFixed(2)
+        document.getElementById("perimeter").innerHTML = numOfSides * size
+        let polygon = document.createElementNS('http://www.w3.org/2000/svg', "polygon")
+        polygon.setAttribute("class", "polygon")
+        polygon.setAttribute("points", vertices.join(" "))
+        svg.append(polygon)
+    }
+    generatePolygon(6, 20, 250)
+</script>
+
+</html>
