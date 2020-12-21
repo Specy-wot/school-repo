@@ -25,6 +25,17 @@
         Benvenuto al Quiz!
     </div>
 
+    <div class="zoom">
+        Zoom
+        <div class="row">
+            <div class="minBtn" onclick="zoom(-1)">
+                
+            </div>
+            <div class="plusBtn" onclick="zoom(1)">
+                
+            </div>
+        </div>
+    </div>
     <div class="quizWrapper">
 
     </div>
@@ -32,7 +43,7 @@
         <button class="rotateBtn" onclick="rotate(1)"></button>
         <button class="rotateBtn" style="transform: rotate(180deg);" onclick="rotate(-1)"></button>
     </div>
-    <div class="carouselBg">
+    <div class="carouselBg" zoom="1">
         <div class="quizHolder">
             <div class="carousel">
                 <div class="quiz">A</div>
@@ -170,7 +181,7 @@
                     isCorrect: true
                 },
                 {
-                    text: "Ungarese",
+                    text: "Ungherese",
                     isCorrect: false
                 },
                 {
@@ -540,6 +551,13 @@
     //------------------------------------------------------------------//
     function rotate(e) {
         quiz.rotate(e)
+    }
+    function zoom(amount){
+        let element = document.querySelector(".carouselBg")
+        let zoom = parseFloat(element.getAttribute("zoom"))
+        zoom += 0.1 * amount
+        element.setAttribute("zoom",zoom)
+        element.style.transform = "scale("+zoom+")"
     }
 </script>
 
