@@ -47,35 +47,37 @@
 
 </body>
 <script>
-    class QuizHTML {
-        constructor(obj) {
-
-        }
-    }
     class QuizWrapper {
         constructor(el) {
             this.quizzes = []
             this.step = 0
             this.position = 0
+            this.moves = 0
             this.el = el
         }
-        calcAngle = () => {
+        calcAngle() {
             let quizzesEl = document.querySelectorAll(".quiz")
             this.step = 360 / quizzesEl.length
             quizzesEl.forEach((e, i) => {
                 e.style.transform = "rotateY(" + (this.step * i) + "deg) translateZ(400px) scale(0.55)"
             })
         }
-        rotate = (howMuch) => {
+        rotate(howMuch) {
             this.position += this.step * howMuch
+            this.moves ++
+            if(this.moves > 3){
+                document.getElementById("finalDiv").style.visibility = "visible"
+            }
             this.el.style.transform = "rotateY(" + this.position + "deg)"
         }
     }
+
+    //------------------------------------------------------------------//
+
     class Quiz {
         constructor(title, answers, multiAnswer) {
             this.title = title
             this.answers = answers
-            this.selectedAnswer = 0
             let quizHtml = document.createElement("div")
             quizHtml.className = "quiz"
             let titleEl = document.createElement("div")
@@ -115,6 +117,9 @@
         }
 
     }
+
+    //QUIZ QUESTIONS
+
     let quizzes = [
         {
             title: "Che nazione è <img  class ='flag' src='https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_the_Netherlands_%282008_Summer_Olympics%29.svg'>? ",
@@ -445,7 +450,14 @@
             ]
         },
     ]
-    let step = 0
+
+
+
+
+
+
+
+
     let quiz = new QuizWrapper(document.querySelector(".carousel"))
     let quizArray = []
     function shuffleArray(array) {
@@ -456,10 +468,14 @@
             array[j] = temp;
         }
     }
+
     shuffleArray(quizzes)
     quizzes.forEach(quiz => {
         shuffleArray(quiz.answers)
     })
+
+    //------------------------------------------------------------------//
+
     function populateQuiz() {
         quizArray = []
         quiz.el.innerHTML = ""
@@ -469,6 +485,8 @@
             quizArray.push(quizHtml)
         })
         let end = document.createElement("div")
+        end.id = "finalDiv"
+        end.style.visibility = "hidden"
         end.className = "quiz"
         let endTitle = document.createElement("div")
         let checkBtn = document.createElement("button")
@@ -495,6 +513,8 @@
     }
     populateQuiz()
 
+    //------------------------------------------------------------------//
+
     function checkQuiz() {
         let correct = 0
         let wrong = 0
@@ -516,6 +536,8 @@
         document.getElementById("wrong").innerText = wrong
         document.getElementById("score").innerText = correct - wrong
     }
+
+    //------------------------------------------------------------------//
     function rotate(e) {
         quiz.rotate(e)
     }
