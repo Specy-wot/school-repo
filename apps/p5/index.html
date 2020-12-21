@@ -1,0 +1,524 @@
+<!doctype html>
+
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Esercizio Quiz</title>
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+    <meta name="description" content="Esercizio Quiz sulle lingue">
+    <meta name="author" content="Specy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#191B23">
+    <link rel="stylesheet" href="/css/specy.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body class="column centerX centerY">
+    <div class="useInLandscape">
+        <div class="title" style="font-size: 2rem;">
+            Per favore, ruota il dispositivo
+        </div>
+    </div>
+    <div class="welcome">
+        Benvenuto al Quiz!
+    </div>
+
+    <div class="quizWrapper">
+
+    </div>
+    <div class="mask">
+        <button class="rotateBtn" onclick="rotate(1)"></button>
+        <button class="rotateBtn" style="transform: rotate(180deg);" onclick="rotate(-1)"></button>
+    </div>
+    <div class="carouselBg">
+        <div class="quizHolder">
+            <div class="carousel">
+                <div class="quiz">A</div>
+                <div class="quiz">B</div>
+                <div class="quiz">C</div>
+                <div class="quiz">D</div>
+                <div class="quiz">E</div>
+                <div class="quiz">F</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    class QuizHTML {
+        constructor(obj) {
+
+        }
+    }
+    class QuizWrapper {
+        constructor(el) {
+            this.quizzes = []
+            this.step = 0
+            this.position = 0
+            this.el = el
+        }
+        calcAngle = () => {
+            let quizzesEl = document.querySelectorAll(".quiz")
+            this.step = 360 / quizzesEl.length
+            quizzesEl.forEach((e, i) => {
+                e.style.transform = "rotateY(" + (this.step * i) + "deg) translateZ(400px) scale(0.55)"
+            })
+        }
+        rotate = (howMuch) => {
+            this.position += this.step * howMuch
+            this.el.style.transform = "rotateY(" + this.position + "deg)"
+        }
+    }
+    class Quiz {
+        constructor(title, answers, multiAnswer) {
+            this.title = title
+            this.answers = answers
+            this.selectedAnswer = 0
+            let quizHtml = document.createElement("div")
+            quizHtml.className = "quiz"
+            let titleEl = document.createElement("div")
+            titleEl.className = "quizTitle"
+            titleEl.innerHTML = this.title
+            quizHtml.append(titleEl)
+            let form = document.createElement("form")
+            form.className = "quizForm"
+            answers.forEach(answer => {
+                answer.isSelected = false
+                let row = document.createElement("div")
+                row.className = "quizRow"
+                let radio = document.createElement("input")
+                radio.setAttribute("name", this.title)
+                if (multiAnswer) {
+                    radio.type = "checkbox"
+                    radio.addEventListener("click", function () {
+                        answer.isSelected = !answer.isSelected
+                    })
+                } else {
+                    radio.type = "radio"
+                    radio.addEventListener("click", function () {
+                        answers.forEach(answer => answer.isSelected = false)
+                        answer.isSelected = true
+                    })
+                }
+
+                answer.html = row
+                let text = document.createElement("div")
+                text.className = "quizText"
+                row.append(radio, text)
+                text.innerText = answer.text
+                form.append(row)
+            })
+            quizHtml.append(form)
+            this.html = quizHtml
+        }
+
+    }
+    let quizzes = [
+        {
+            title: "Che nazione è <img  class ='flag' src='https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_the_Netherlands_%282008_Summer_Olympics%29.svg'>? ",
+            multiAnswer: false,
+            answers: [
+                {
+                    text: "Francia",
+                    isCorrect: false
+                },
+                {
+                    text: "Russia",
+                    isCorrect: false
+                },
+                {
+                    text: "Olanda",
+                    isCorrect: true
+                }
+            ]
+        },
+        {
+            title: "Che lingua è? <img  class ='quizImg' src='https://www.torugg.org/anthemnew.jpg'>",
+            multiAnswer: false,
+            answers: [
+                {
+                    text: "Russo",
+                    isCorrect: false
+                },
+                {
+                    text: "Ukraino",
+                    isCorrect: true
+                },
+                {
+                    text: "Serbo",
+                    isCorrect: false
+                },
+                {
+                    text: "Slovacco",
+                    isCorrect: false
+                }
+            ]
+        },
+        {
+            title: "Quali sono le lingue germaniche?",
+            multiAnswer: true,
+            answers: [
+                {
+                    text: "Inglese",
+                    isCorrect: true
+                },
+                {
+                    text: "Ungarese",
+                    isCorrect: false
+                },
+                {
+                    text: "Turco",
+                    isCorrect: false
+                },
+                {
+                    text: "Olandese",
+                    isCorrect: true
+                },
+                {
+                    text: "Tamil",
+                    isCorrect: false
+                }
+            ]
+        },
+        {
+            title: "Che lingua è? <img  class ='quizImg' src='https://cdn.discordapp.com/attachments/466748625138089994/790606318770978816/unknown.png'>",
+            multiAnswer: false,
+            answers: [
+                {
+                    text: "Cinese",
+                    isCorrect: false
+                },
+                {
+                    text: "Coreano",
+                    isCorrect: false
+                },
+                {
+                    text: "Giapponese",
+                    isCorrect: true
+                },
+                {
+                    text: "Cinese Mandarino",
+                    isCorrect: false
+                }
+            ]
+        },
+        {
+            title: "Che nazione è <img  class ='flag' src='https://upload.wikimedia.org/wikipedia/commons/5/51/Flag_of_North_Korea.svg'>?",
+            multiAnswer: false,
+            answers: [
+                {
+                    text: "Corea del nord",
+                    isCorrect: true
+                },
+                {
+                    text: "Corea del sud",
+                    isCorrect: false
+                },
+                {
+                    text: "Thailandia",
+                    isCorrect: false
+                }
+            ]
+        },
+        {
+            title: "Che nazione è  <img  class ='flag' src='https://cdn.discordapp.com/attachments/466748625138089994/790607829089386506/unknown.png'>?",
+            multiAnswer: false,
+            answers: [
+                {
+                    text: "Irlanda",
+                    isCorrect: false
+                },
+                {
+                    text: "India",
+                    isCorrect: false
+                },
+                {
+                    text: "Nigeria",
+                    isCorrect: false
+                },
+                {
+                    text: "Costa d'Avorio",
+                    isCorrect: true
+                }
+            ]
+        },
+        {
+            title: "Quali sono le lingue semite?",
+            multiAnswer: true,
+            answers: [
+                {
+                    text: "Greco",
+                    isCorrect: false
+                },
+                {
+                    text: "Zulu",
+                    isCorrect: false
+                },
+                {
+                    text: "Bavarese",
+                    isCorrect: false
+                },
+                {
+                    text: "Amarico",
+                    isCorrect: true
+                },
+                {
+                    text: "Arabo",
+                    isCorrect: true
+                }
+            ]
+        },
+        {
+            title: "Quali sono le lingue balto-slave?",
+            multiAnswer: true,
+            answers: [
+                {
+                    text: "Kazak",
+                    isCorrect: true
+                },
+                {
+                    text: "Nepalese",
+                    isCorrect: false
+                },
+                {
+                    text: "Polacco",
+                    isCorrect: true
+                },
+                {
+                    text: "Vietnamese",
+                    isCorrect: false
+                },
+                {
+                    text: "Ceco",
+                    isCorrect: true
+                }
+            ]
+        },
+        {
+            title: "Che nazione è  <img  class ='flag' src='https://cdn.discordapp.com/attachments/466748625138089994/790612092414984222/unknown.png'>?",
+            multiAnswer: false,
+            answers: [
+                {
+                    text: "Polonia",
+                    isCorrect: false
+                },
+                {
+                    text: "Austria",
+                    isCorrect: false
+                },
+                {
+                    text: "Indonesia",
+                    isCorrect: true
+                },
+                {
+                    text: "Costa d'Avorio",
+                    isCorrect: true
+                }
+            ]
+        },
+        {
+            title: "Che lingua è? <img  class ='quizImg' src='https://cdn.discordapp.com/attachments/466748625138089994/790645959251460106/unknown2.png'>",
+            multiAnswer: false,
+            answers: [
+                {
+                    text: "Arabo",
+                    isCorrect: false
+                },
+                {
+                    text: "Turco",
+                    isCorrect: false
+                },
+                {
+                    text: "Curdo",
+                    isCorrect: true
+                },
+                {
+                    text: "Decan",
+                    isCorrect: false
+                }
+            ]
+        },
+        {
+            title: "Quali sono le lingue Volta–Niger?",
+            multiAnswer: true,
+            answers: [
+                {
+                    text: "Thailandese",
+                    isCorrect: false
+                },
+                {
+                    text: "Igbo",
+                    isCorrect: true
+                },
+                {
+                    text: "Deccan",
+                    isCorrect: false
+                },
+                {
+                    text: "Yoruba",
+                    isCorrect: true
+                },
+                {
+                    text: "Cebuano",
+                    isCorrect: false
+                }
+            ]
+        },
+        {
+            title: "Che nazione è <img  class ='flag' src='https://cdn.discordapp.com/attachments/466748625138089994/790616322974679050/unknown.png'> ?",
+            multiAnswer: false,
+            answers: [
+                {
+                    text: "Cipro del Nord",
+                    isCorrect: false
+                },
+                {
+                    text: "Turchia",
+                    isCorrect: false
+                },
+                {
+                    text: "Singapore",
+                    isCorrect: false
+                },
+                {
+                    text: "Tunisia",
+                    isCorrect: true
+                }
+            ]
+        },
+        {
+            title: "Quali sono le lingue romanze?",
+            multiAnswer: true,
+            answers: [
+                {
+                    text: "Francese",
+                    isCorrect: true
+                },
+                {
+                    text: "Rumena",
+                    isCorrect: true
+                },
+                {
+                    text: "Greco",
+                    isCorrect: false
+                },
+                {
+                    text: "Nepali",
+                    isCorrect: false
+                },
+                {
+                    text: "Italiano",
+                    isCorrect: true
+                },
+                {
+                    text: "portoghese",
+                    isCorrect: true
+                }
+            ]
+        },
+        {
+            title: "Quali sono le lingue indoarie?",
+            multiAnswer: true,
+            answers: [
+                {
+                    text: "Sunda",
+                    isCorrect: false
+                },
+                {
+                    text: "Punjabi",
+                    isCorrect: true
+                },
+                {
+                    text: "Gujarati",
+                    isCorrect: true
+                },
+                {
+                    text: "Urdu",
+                    isCorrect: true
+                },
+                {
+                    text: "Uyghur",
+                    isCorrect: false
+                }
+            ]
+        },
+    ]
+    let step = 0
+    let quiz = new QuizWrapper(document.querySelector(".carousel"))
+    let quizArray = []
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+    shuffleArray(quizzes)
+    quizzes.forEach(quiz => {
+        shuffleArray(quiz.answers)
+    })
+    function populateQuiz() {
+        quizArray = []
+        quiz.el.innerHTML = ""
+        quizzes.forEach(quizEl => {
+            let quizHtml = new Quiz(quizEl.title, quizEl.answers, quizEl.multiAnswer)
+            quiz.el.append(quizHtml.html)
+            quizArray.push(quizHtml)
+        })
+        let end = document.createElement("div")
+        end.className = "quiz"
+        let endTitle = document.createElement("div")
+        let checkBtn = document.createElement("button")
+        checkBtn.innerText = "Controlla"
+        checkBtn.addEventListener("click", checkQuiz)
+        checkBtn.className = "button darkTeal"
+        endTitle.innerText = "Quiz Finito!"
+        endTitle.className = "quizTitle"
+        let resultDiv = document.createElement("div")
+        resultDiv.className = "quizForm resultDiv"
+        let row1 = document.createElement("div")
+        let row2 = document.createElement("div")
+        let row3 = document.createElement("div")
+        row1.className = "scoreRow"
+        row2.className = "scoreRow"
+        row3.className = "scoreRow"
+        row1.innerHTML = "<div>Corrette:</div><div id='correct'>0</div>"
+        row2.innerHTML = "<div>Sbagliate:</div><div id='wrong'>0</div>"
+        row3.innerHTML = "<div>Punteggio:</div><div id='score'>0</div>"
+        resultDiv.append(row1, row2, row3)
+        end.append(endTitle, checkBtn, resultDiv)
+        quiz.el.append(end)
+        quiz.calcAngle()
+    }
+    populateQuiz()
+
+    function checkQuiz() {
+        let correct = 0
+        let wrong = 0
+        let numOfAnswers = 0
+        quizArray.forEach(quiz => {
+            quiz.answers.forEach(answer => {
+                let color = ""
+                if (answer.isCorrect) color = "green"
+                if (answer.isSelected && !answer.isCorrect) color = "red"
+                if (answer.isCorrect && answer.isSelected) {
+                    correct++
+                } else if (answer.isCorrect) {
+                    wrong++
+                }
+                answer.html.className = "quizRow " + color
+            })
+        })
+        document.getElementById("correct").innerText = correct
+        document.getElementById("wrong").innerText = wrong
+        document.getElementById("score").innerText = correct - wrong
+    }
+    function rotate(e) {
+        quiz.rotate(e)
+    }
+</script>
+
+</html>

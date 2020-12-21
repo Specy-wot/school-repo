@@ -2,20 +2,28 @@ addEventListener("load", function () {
     var viewport = document.querySelector("meta[name=viewport]");
     viewport.setAttribute("content", viewport.content + ", height=" + window.innerHeight);
 })
+
+
+
 function handleSubmit(e){
     let inputs = e.querySelectorAll("input")
     let name = inputs[0].value
     let className = inputs[1].value
     let age = inputs[2].value
     populateLoggedUser(name)
+
     let dataObj = {
         name: name,
         className : className,
         age: age
     }
+    
     localStorage.setItem("storedData", JSON.stringify(dataObj))
     return false
 }
+
+
+
 function populateLoggedUser(name,fast){
     document.getElementById("mainDescription").innerHTML = "Procedi in basso per i giochi!"
     document.getElementById("studentName").innerHTML = name
