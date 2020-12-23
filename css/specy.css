@@ -282,7 +282,10 @@ html {
     background-color: #32cd32 !important;
     color: white;
 }
-
+.redPurple{
+    background-color: #b00752 !important;
+    color: white;
+}
 .purple{
     background-color: #9a4ef1 !important;
     color: white;

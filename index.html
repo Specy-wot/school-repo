@@ -12,62 +12,116 @@
   <meta name="theme-color" content="#191B23">
   <link rel="stylesheet" href="/css/specy.css">
   <style>
+      @font-face {
+            font-family: League Spartan;
+            src: url(/fonts/LeagueSpartan-Bold.otf);
+
+        }
+      body{
+          background-color: rgb(15 13 25);
+      }
+      *{
+          font-family: League Spartan;
+          color: white;
+      }
+      button{
+        margin-bottom: 0.3rem;
+      }
+      .navBar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(40, 48, 73, 0.9);
+            height: 5vh;
+            border-bottom: 2px #b00752 solid;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+        .cell{
+            background-color: rgb(44, 44, 44);
+            box-shadow: 0 0 10px #333333;
+        }
+        .navBarLogo {
+            background-image: url(./images/favicon.png);
+            cursor: pointer;
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 4.5vh;
+            width: 4.5vh;
+            margin-left: 1vw;
+        }
+
+        .navBarOption {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-left: 5vw;
+        }
+
+        .navBarOption:hover {
+            color: #DA0363;
+        }
+        a{
+            text-decoration: none;
+        }
       @media screen and (orientation: portrait){
           .div-60{
               padding: 0;
+              width: 95vw;
           }
       }
   </style>
 </head>
 
 <body class="flex dm-L1 padding-1 scroll-bar text-white">
-    <div class="title" style="margin-top: 2rem;">
-        Welcome!
+    <div class="navBar">
+        <div class="navBarLogo" onclick="drawS()"></div>
+        <div style="display: inline-flex; margin-left: auto; margin-right: 2vw; margin-top: 0.2rem;">
+            <a class="navBarOption"href="https://specy-wot.github.io/">
+                Go to portfolio
+            </a>
+        </div>
     </div>
-    <img src="/images/drawkit-developer-woman-colour.svg" height="280">
+
+
     <div class="div-60">
-        <div class="flex big-text centerX">
+        <div class="flex big-text centerX margin-top-4">
             Select a project
         </div>
-        <div class="column container dm-L3">
-            <button class="button fillX green" onclick="window.location='/specyCss.html'">
+        <div class="column container cell">
+            <a class="button fillX redPurple" href="/specyCss.html">
                 Showcase pack css
-            </button>
-            <button class="button fillX green" onclick="window.location='./apps/teaching/parte1.html'">
+            </a>
+            <a class="button fillX redPurple" href="./apps/teaching/parte1.html">
                 Corsi HTML / CSS / JavaScript
-            </button>
-            <button class="button fillX green" onclick="window.location='./apps/game/game.html'">
+            </a>
+            <a class="button fillX redPurple" href="./apps/game/game.html">
                 Corona world game!
-            </button>
-            <button class="button fillX green" onclick="window.location='./apps/myDictionary/index.html'">
+            </a>
+            <a class="button fillX redPurple" href="./apps/myDictionary/index.html">
                 My Dictionary
-            </button>
-            <div class="line-break margin-2">
-                <div class="line-break-text dm-L3 text-white">
+            </a>
+            <div class="line-break margin-1">
+                <div class="line-break-text dm-L3 text-white" style="margin-top: -0.5rem;">
                     Homework
                 </div>
             </div>
-            <button class="button fillX green" onclick="window.location='./apps/p3/index.html'">
-                Esercizio sito per bambini
-            </button>
-            <button class="button fillX green" onclick="window.location='./apps/p5/index.html'">
-                Esercizio Quiz
-            </button>
-            <button class="button fillX green" onclick="window.location='./apps/p4/index.html'">
-                Esercizio calcolatore poligoni
-            </button>
-            <button class="button fillX green" onclick="window.location='./apps/p1/page1.html'">
-                Esercizio form Tpsit
-            </button>
-            <button class="button fillX green" onclick="window.location='./apps/p2/exercise.html'">
-                Esercizio stringhe Tpsit
-            </button>
-        </div>
-    </div>
-    <div class="footer-wrapper to-right">
-        <div class="to-bottom" style="cursor: pointer;"
-        onclick="window.location='https\://specy-wot.github.io/'">
-            Made By Specy
+            <a class="button fillX redPurple" href="./apps/p3/index.html">
+                Sito per bambini
+            </a>
+            <a class="button fillX redPurple" href="./apps/p5/index.html">
+                Quiz sulle lingue
+            </a>
+            <a class="button fillX redPurple" href="./apps/p4/index.html">
+                Generatore poligoni
+            </a>
+            <a class="button fillX redPurple" href="./apps/p1/page1.html">
+                Form
+            </a>
+            <a class="button fillX redPurple" href="./apps/p2/exercise.html">
+                Stringhe
+            </a>
         </div>
     </div>
 </body>

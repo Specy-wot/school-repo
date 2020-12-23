@@ -237,7 +237,6 @@ function checkOperation() {
         }, 500)
     } else {
         game.score -= 1
-        game.speed -= game.speed / 8
         el.classList.add("red")
         setTimeout(() => {
             el.classList.remove("red")

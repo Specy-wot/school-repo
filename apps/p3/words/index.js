@@ -259,10 +259,8 @@ function randomNum(limit) { return Math.floor(Math.random() * limit) }
 let opCanvas = document.getElementById("canvasOperations")
 let opCtx = opCanvas.getContext("2d")
 class Word {
-    word = ""
-    x = 0
-    y = 20
     constructor(x) {
+        this.y = 20
         if (x > game.width - 100) x -= 100
         if (x < 100) x += 100
         this.x = x
