@@ -1,0 +1,328 @@
+@font-face {
+    font-family: 'Lato-Regular';
+    src: local('Lato-Regular'), url(./Components/fonts/Lato-Regular.ttf);
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+  a{
+      color: white;
+  }
+body{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #c0d5ff;
+    color: white;
+}
+.root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+*{
+    font-family: Arial;
+    font-family: Lato-Regular;
+    outline: none;
+}
+html{
+    margin: 0;
+    padding: 0;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}
+.words{
+    font-size: 1.2rem;
+}
+.blue{
+    color: #003399;
+}
+.spaceBetween{
+    display: flex;
+    justify-content: space-between;
+}
+.topRow{
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    flex-direction: row;
+    background-color: #003399;
+    padding: 2rem;
+    padding-top: 0;
+    width: 100%;
+    height: calc(100vh - 40px);
+}
+.welcome{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
+    padding: 2rem;
+    flex: 1;
+    font-size: 3rem;
+}
+.europe{
+    display: inline-block;
+    color: #ffcc00;
+    font-weight: bold;
+}
+.titleRow{
+    width: 100%;
+    font-size: 2.5rem;
+    display: flex;
+    font-weight: bold;
+    color: #ffcc00;
+}
+.valueWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+}
+.valueTitle{
+    color: #ffcc00;
+    margin-bottom: 0.5rem;
+}
+.value{
+    border-radius: 0.4rem;
+    background-color: #1650c3;
+    padding: 1rem;
+    margin: 0.5rem;
+    flex: 1;
+    min-width: calc(50% - 3rem);
+    font-size: 1.2rem;
+}
+.toLeft{
+    justify-content: flex-start;
+}
+.toright{
+    justify-content: flex-end;
+}
+.row2{
+    background-color: #0a3ea5;
+    padding: 2rem;
+    padding-top: 4rem;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: calc(100vh - 40px);
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+}
+.UEFlag{
+    width: 100%;
+    height: 300px;
+    background-color: #0a3ea5;
+    background-image: url(./Components/Flag_of_Europe.svg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 15%;
+    background-size: 100%;
+}
+.centerY{
+    align-items: center;
+}
+.innerRow2{
+    width: 60vw;
+    z-index: 3;
+}
+.currentNation{
+    transition: all 0.2s;
+    font-weight: bold;
+    font-size: 1.2rem;
+    min-height: 1.2rem;
+    color: #ffcc00;
+    display: inline-block;
+}
+.nationsTextAndImages{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #1650c3;
+    border-radius: 0.4rem;
+    padding: 0.8rem;
+    padding-bottom: 0.3rem;
+    box-sizing: border-box;
+    margin-top: 2rem;
+}
+.mapSelectionWrapper{
+    font-size: 1.2rem;
+}
+.space{
+    height: 4rem;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.HQWrapper{
+    display: flex;
+    flex-direction: column;
+}
+.headquarters{
+    margin-top: 1.5rem;
+    width: fit-content;
+    background-color: #1650c3;
+    flex-direction: row;
+    padding: 1rem;
+    display: flex;
+    box-sizing: border-box;
+    border-radius: 0.4rem;
+    width: 100%;
+    align-items: center;
+    position: relative;
+}
+.HQColumn{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.HQTitle{
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+.HQImage{
+    height: 125px;
+    margin-left: 2rem;
+}
+.HQText{
+    font-size: 1.2rem;
+    width: 100%;
+}
+.card{
+    display: flex;
+    box-sizing: border-box;
+    border-radius: 0.4rem;
+    margin-top: 1rem;
+}
+.target{
+    border-radius: 0.4rem;
+    background-color: #1650c3;
+    padding: 1rem;
+    margin: 0.5rem;
+    flex: 1;
+    min-width: calc(33% - 3rem);
+    font-size: 1.2rem;
+}
+.targetWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+.list{
+    font-size: 1.3rem;
+}
+.footer{
+    width: 100%;
+    background-color: rgba(0,51,153);
+    min-height: 20vh;
+    padding: 2rem 6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+
+}
+.footer a{
+    display: flex;
+    flex: 1;
+    min-width: 30%;
+    color: #b9b9b9;
+    justify-content: center;
+}
+@media only screen and (orientation:portrait){
+    .topRow{
+        flex-direction: column;
+        padding:0.5rem;
+    }
+    .welcome{
+        justify-content: center;
+        flex:none;
+        height: fit-content;
+        margin-top: 3rem;
+        padding: 0;
+        font-size: 3rem;
+        padding-top: 2rem;
+    }
+    .nationsTextAndImages{
+        flex-direction: column;
+        align-items: center;
+    }
+    .mapSelectionWrapper{
+        width: 95vw;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .words{
+        font-size: 1.1rem;
+        margin: 1rem 0;
+        padding: 0.5rem;
+    }
+    .row2{
+        padding: 0.5rem;
+    }
+    .innerRow2{
+        width: 95vw;
+        padding-top: 2rem;
+    }
+    .innerWelcome{
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    .headquarters{
+        margin-top: 0.8rem;
+    }
+    .HQImage{
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        height: 50px;
+    }
+    .titleRow{
+        font-size: 2rem;
+        justify-content: center;
+        margin-top: 4rem;
+    }
+    .HQText{
+        font-size: 1.2rem;
+    }
+    .HQTitle{
+        font-size: 1.8rem;
+    }
+    .value{
+        flex: unset;
+        width: 100%;
+    }
+    .target{
+        min-width: calc(50% - 3rem);
+    }
+    .UEFlag{
+        background-position-y: -20%;
+        background-size: 125%;
+        height: 200px;
+    }
+    .footer{
+        padding: 1rem;
+    }
+    .footer a{
+        min-width: 50%;
+    }
+}

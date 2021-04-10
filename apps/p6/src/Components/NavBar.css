@@ -1,0 +1,64 @@
+.logo{
+    height: 40px;
+    cursor: pointer;
+    margin-left: 2rem;
+    margin-right: -1rem;
+}
+.navBar{
+    width: 100%;
+    background-color: #003399;
+    padding: 0.2rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: solid 1px #ffcc00;
+    position: sticky;
+    top: 0;
+    min-height: 40px;
+    z-index: 999;
+}
+.navEl{
+    color: #dbc25b;
+    margin-right: 3rem;
+    font-size: 1.3rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.navEl:hover{
+    filter: brightness(0.8);
+}
+.hamburgerIcon{
+    height: 35px;
+    margin-left: auto;
+    margin-right: 1rem;
+}
+.portraitNavbarHolder{
+    background-color: #0a3ea5;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+.portraitNavbarHolder .navEl{
+    margin-top: 0.5rem;
+    margin-right: 0;
+    background-color: #1650c3;
+    padding: 0.2rem 1rem;
+    border-radius: 0.2rem;
+}
+@media only screen and (orientation:portrait){
+    .navBar{
+        flex-direction: column;
+    }
+    .portraitNavBar{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+    }
+    .logo{
+        margin-left: 0.5rem;
+    }
+}

@@ -1,0 +1,34 @@
+.europeMap {
+    fill: #003399;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-width:1.2;
+    stroke: #ffcc00;
+    width: 60vh;
+    margin-right: 4rem;
+}
+.europeMap path{
+    transition: all 0.5s;
+    
+}
+.highlighted{
+    fill: #ffcc00;
+}
+.nationTitle{
+    font-size: 2rem;
+}
+.nationContainer{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+@media only screen and (orientation:portrait){
+    .europeMap{
+        margin-right: 0;
+        width: 90vw;
+    }
+    .nationContainer{
+        justify-content: center;
+    }
+}
