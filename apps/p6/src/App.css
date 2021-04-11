@@ -68,9 +68,10 @@ html{
     justify-content: left;
     align-items: center;
     flex-direction: row;
-    padding: 2rem;
+    padding: 1.8rem;
+    padding-right: 0.2rem;
     flex: 1;
-    font-size: 3rem;
+    font-size: 2.9rem;
 }
 .europe{
     display: inline-block;
@@ -297,27 +298,30 @@ html{
         height: 50px;
     }
     .titleRow{
-        font-size: 2rem;
+        font-size: 2.2rem;
         justify-content: center;
         margin-top: 4rem;
     }
     .HQText{
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     .HQTitle{
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
     }
     .value{
         flex: unset;
         width: 100%;
+        font-size: 1.1rem;
     }
     .target{
         min-width: calc(50% - 3rem);
+        font-size: 1.1rem;
     }
     .UEFlag{
-        background-position-y: -20%;
-        background-size: 125%;
-        height: 200px;
+        background-size: 100%;
+        height: 300px;
+        background-position: center;
     }
     .footer{
         padding: 1rem;

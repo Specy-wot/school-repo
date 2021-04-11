@@ -60,4 +60,7 @@
     .nationSliderWrapper{
         margin-left: 0;
     }
+    .arrow img{
+        height: 50px;
+    }
 }
